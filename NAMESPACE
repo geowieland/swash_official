@@ -1,0 +1,87 @@
+export(
+  "as_balanced",
+  "binary_metrics",
+  "binary_metrics_glm",
+  "compare_countries",
+  "exponential_growth",
+  "hist_ci", 
+  "is_balanced",
+  "logistic_growth",
+  "metrics",
+  "nbmatrix",
+  "nbstat",
+  "plot_breakpoints",
+  "plot_coef_ci",
+  "quantile_ci", 
+  "R_t",
+  "swash"
+  )
+exportMethods(
+  "confint",
+  "plot",
+  "print",
+  "summary",
+  "plot_regions",
+  "growth",
+  "growth_initial"
+)
+exportClasses(
+  "sbm",
+  "sbm_ci",
+  "countries",
+  "loggrowth"
+)
+
+importFrom(
+  "graphics", 
+   "abline", 
+   "barplot", 
+   "hist", 
+   "par", 
+   "boxplot", 
+   "lines", 
+   "axis", 
+   "grid", 
+   "mtext", 
+   "points", 
+   "rect",
+   "text",
+   "legend", 
+  "polygon"
+)
+importFrom(
+  "methods", 
+  "new"
+  )
+importFrom(
+  "stats", 
+  "aggregate", 
+  "lm", 
+  "median", 
+  "nls", 
+  "quantile",
+  "coef",
+  "predict"
+  )
+importFrom(
+  "grDevices", 
+  "dev.new",
+  "rgb"
+  )
+importFrom(
+  "lubridate", 
+  "is.Date"
+  )
+importFrom(
+  "spdep",
+  "poly2nb"
+)
+import("sf")
+importFrom(
+  "zoo",
+  "rollmean"
+)
+importFrom(
+  "strucchange",
+  "breakpoints"
+)
