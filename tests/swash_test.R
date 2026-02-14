@@ -4,8 +4,8 @@
 # Author:      Thomas Wieland 
 #              ORCID: 0000-0001-5168-9846
 #              mail: geowieland@googlemail.com
-# Version:     1.3.0
-# Last update: 2025-12-30 11:32
+# Version:     1.3.1
+# Last update: 2026-02-14 13:09
 # Copyright (c) 2025 Thomas Wieland
 #-------------------------------------------------------------------------------
 
@@ -13,13 +13,13 @@ library(lubridate)
 library(sf)
 library(spdep)
 
-source("swash/R/swash.R")
+source("../R/swash.R")
 # Loading swash code
 
 
 # Switzerland:
 
-load("swash/data/COVID19Cases_geoRegion.rda")
+load("../data/COVID19Cases_geoRegion.rda")
 
 table(COVID19Cases_geoRegion$geoRegion)
 table(COVID19Cases_geoRegion$datum)
@@ -96,7 +96,7 @@ CH_covidwave1_initialgrowth_3weeks$results
 
 # Austria:
 
-load("swash/data/Oesterreich_Faelle.rda")
+load("../data/Oesterreich_Faelle.rda")
 
 table(Oesterreich_Faelle$NUTS3)
 table(Oesterreich_Faelle$Datum)
@@ -172,7 +172,7 @@ expgrowth_BS@doubling
 # Doubling rate
 
 
-load("swash/data/RKI_Corona_counties.rda")
+load("../data/RKI_Corona_counties.rda")
 # German counties (Source: Robert Koch Institute)
 
 Corona_nbmat <- 
@@ -195,7 +195,7 @@ Corona_nbstat$nbmat_data_aggregate
 # Sum of population (EWZ) of neighboring counties
 
 
-load("swash/data/did_fatalities_splm_coef.rda")
+load("../data/did_fatalities_splm_coef.rda")
 # Results of a difference-in-differences model
 
 plot_coef_ci(
@@ -235,7 +235,7 @@ plot_coef_ci(
 # Plot with point estimates and confidence intervals
 
 
-load("swash/data/Infections.rda")
+load("../data/Infections.rda")
 # Confirmed SARS-CoV-2 cases in Germany
 
 plot_breakpoints(
