@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: Please cite the following works when using this software.
+type: software
+authors:
+  - family-names: Wieland
+    given-names: Thomas
+    orcid: "https://orcid.org/0000-0001-5168-9846"
+doi: 10.5281/zenodo.18652150
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18652150
+  - type: url
+    value: https://doi.org/10.5281/zenodo.18652150
+title: swash: Swash-Backwash Model for the Single Epidemic Wave (R package)
+url: https://doi.org/10.5281/zenodo.18652150
+preferred-citation:
+  authors:
+    - family-names: Wieland
+      given-names: Thomas
+  keywords:
+    - Health geography
+    - Spatial epidemiology
+    - Swash-Backwash Model for the Single Epidemic Wave
+    - Epidemics
+  title: >-
+    swash: Swash-Backwash Model for the Single Epidemic Wave (R package)
+  date-published: 2026-02-15
+  year: 2026
+  month: 2
+  type: software
+  url: https://doi.org/10.5281/zenodo.18652150
+  doi: 10.5281/zenodo.18652150
