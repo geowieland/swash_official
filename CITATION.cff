@@ -11,7 +11,7 @@ identifiers:
     value: 10.5281/zenodo.18652150
   - type: url
     value: https://doi.org/10.5281/zenodo.18652150
-title: swash: Swash-Backwash Model for the Single Epidemic Wave (R package)
+title: "swash: Swash-Backwash Model for the Single Epidemic Wave"
 url: https://doi.org/10.5281/zenodo.18652150
 preferred-citation:
   authors:
