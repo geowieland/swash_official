@@ -4,14 +4,11 @@
 # Author:      Thomas Wieland 
 #              ORCID: 0000-0001-5168-9846
 #              mail: geowieland@googlemail.com
-# Version:     1.3.1
-# Last update: 2026-02-14 13:09
-# Copyright (c) 2025 Thomas Wieland
+# Version:     1.3.3
+# Last update: 2026-02-20 21:50
+# Copyright (c) 2025-2026 Thomas Wieland
 #-------------------------------------------------------------------------------
 
-library(lubridate)
-library(sf)
-library(spdep)
 
 source("../R/swash.R")
 # Loading swash code
@@ -49,7 +46,8 @@ CH_covidwave1 <-
     data = COVID19Cases_geoRegion,
     col_cases = "entries",
     col_date = "datum",
-    col_region = "geoRegion"
+    col_region = "geoRegion",
+    verbose = TRUE
   )
 # Swash-Backwash Model for Swiss COVID19 cases
 # Spatial aggregate: NUTS 3 (cantons)
@@ -80,14 +78,18 @@ summary(CH_covidwave1_confint)
 plot(CH_covidwave1_confint)
 # Plot of confidence intervals
 
-CH_covidwave1_growth <- growth(CH_covidwave1)
+CH_covidwave1_growth <- growth(
+  CH_covidwave1,
+  verbose = TRUE
+  )
 CH_covidwave1_growth
 # Logistic growth models for sbm object CH_covidwave1
 
 CH_covidwave1_initialgrowth_3weeks <- 
   growth_initial(
     CH_covidwave1,
-    time_units = 21
+    time_units = 21,
+    verbose = TRUE
     )
 CH_covidwave1_initialgrowth_3weeks$results
 # Exponential models for sbm object CH_covidwave1 
@@ -144,7 +146,8 @@ loggrowth_BS <- logistic_growth (
   S_iterations = 10, 
   S_start_est_method = "bisect", 
   seq_by = 10,
-  nls = TRUE
+  nls = TRUE,
+  verbose = TRUE
 )
 # Logistic growth model with stated saturation value
 
