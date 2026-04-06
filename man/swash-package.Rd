@@ -134,60 +134,11 @@ infpan_CH <- calculate_Rt(
   )
 # Calculate effective reproduction number
 
-infpan_CH <- calculate_rollmean(
-  infpan_CH, 
-  col_name = "RollingMean",
-  verbose = TRUE
-)
-# Calculate rolling mean of cases as "RollingMean"
-
-infpan_CH <- calculate_cum(
-  infpan_CH, 
-  col_name = "cumulatives",
-  verbose = TRUE
-)
-# Calculate cumulative values of cases as "cumulatives"
-
-infpan_CH <- calculate_incidence(
-  infpan_CH, 
-  col_name = "incidence",
-  verbose = TRUE
-)
-# Calculate incidence of cases as "incidence"
-
 summary(infpan_CH)
 # Summary of infpan object
 
 timestamps(infpan_CH)
 # Time stamps of infpan object
-
-CH_covidwave1_growth <- 
-  growth(infpan_CH)
-CH_covidwave1_growth
-summary(CH_covidwave1_growth)
-# Logistic growth models for infpan object infpan_CH
-
-CH_covidwave1_initialgrowth_3weeks <- 
-  growth_initial(
-    infpan_CH,
-    time_units = 21
-  )
-CH_covidwave1_initialgrowth_3weeks
-summary(CH_covidwave1_initialgrowth_3weeks)
-# Exponential models for infpan object CH_covidwave1 
-# initial growth in the first 3 weeks
-
-CH_covidwave1_Hawkes <- 
-  growth_hawkes(infpan_CH)
-CH_covidwave1_Hawkes
-summary(CH_covidwave1_Hawkes)
-# Hawkes process models for infpan object infpan_CH 
-
-CH_covidwave1_breaks <- 
-  growth_breaks(infpan_CH)
-CH_covidwave1_breaks
-summary(CH_covidwave1_breaks)
-# Breakpoints for infpan object infpan_CH 
 
 CH_covidwave1 <-
   swash(
