@@ -4,11 +4,10 @@
 # Author:      Thomas Wieland 
 #              ORCID: 0000-0001-5168-9846
 #              mail: geowieland@googlemail.com
-# Version:     1.3.3
-# Last update: 2026-02-20 21:50
+# Version:     2.0.0
+# Last update: 2026-04-04 21:47
 # Copyright (c) 2025-2026 Thomas Wieland
 #-------------------------------------------------------------------------------
-
 
 source("../R/swash.R")
 # Loading swash code
@@ -23,11 +22,110 @@ table(COVID19Cases_geoRegion$datum)
 
 COVID19Cases_geoRegion <-
   COVID19Cases_geoRegion[!COVID19Cases_geoRegion$geoRegion %in% c("CH", "CHFL"),]
-# CH = Switzerland all-over, CHFL = Switzerland and Liechtenstein all-over
+# Exclude CH = Switzerland total and CHFL = Switzerland and Liechtenstein total
 
 COVID19Cases_geoRegion <- 
   COVID19Cases_geoRegion[COVID19Cases_geoRegion$datum <= "2020-05-31",]
-# First COVID-19 wave
+# Extract first COVID-19 wave
+
+infpan_CH <- load_infections_paneldata(
+    data = COVID19Cases_geoRegion,
+    col_cases = "entries",
+    col_date = "datum",
+    col_region = "geoRegion",
+    other_cols = c(
+      "Population" = "pop"
+      #, "Cum. cases" = "sumTotal"
+        ), 
+    verbose = TRUE
+  )
+# Import as infections panel data set (class infpan)
+
+is(infpan_CH)
+# "infpan"
+
+plot(
+  infpan_CH,
+  plot_rollmean = TRUE
+  )
+# Plot cases
+
+infpan_CH <- calculate_Rt(
+  infpan_CH,
+  verbose = TRUE
+  )
+# Calculate effective reproduction number
+
+infpan_CH <- calculate_rollmean(
+  infpan_CH, 
+  col_name = "RollingMean",
+  verbose = TRUE
+)
+# Calculate rolling mean of cases as "RollingMean"
+
+infpan_CH <- calculate_cum(
+  infpan_CH, 
+  col_name = "cumulatives",
+  verbose = TRUE
+)
+# Calculate cumulative values of cases as "cumulatives"
+
+infpan_CH <- calculate_incidence(
+  infpan_CH, 
+  col_name = "incidence",
+  verbose = TRUE
+)
+# Calculate incidence of cases as "incidence"
+
+summary(infpan_CH)
+# Summary of infpan object
+
+timestamps(infpan_CH)
+# Time stamps of infpan object
+
+CH_covidwave1_growth <- 
+  growth(infpan_CH)
+CH_covidwave1_growth
+summary(CH_covidwave1_growth)
+# Logistic growth models for infpan object infpan_CH
+
+CH_covidwave1_initialgrowth_3weeks <- 
+  growth_initial(
+    infpan_CH,
+    time_units = 21
+  )
+CH_covidwave1_initialgrowth_3weeks
+summary(CH_covidwave1_initialgrowth_3weeks)
+# Exponential models for infpan object CH_covidwave1 
+# initial growth in the first 3 weeks
+
+
+CH_covidwave1_Hawkes <- 
+  growth_hawkes(infpan_CH)
+CH_covidwave1_Hawkes
+summary(CH_covidwave1_Hawkes)
+# Hawkes process models for infpan object infpan_CH 
+
+
+CH_covidwave1_breaks <- 
+  growth_breaks(infpan_CH)
+CH_covidwave1_breaks
+summary(CH_covidwave1_breaks)
+# Breakpoints for infpan object infpan_CH 
+
+
+CH_covidwave1 <-
+  swash(
+    infpan_CH,
+    verbose = TRUE
+    )
+# Swash-Backwash Model for Swiss COVID19 cases
+# Spatial aggregate: NUTS 3 (cantons)
+
+summary(CH_covidwave1)
+# Summary of Swash-Backwash Model
+
+# infpan_CH@timestamp
 
 COVID19Cases_geoRegion_balanced <- 
   is_balanced(
@@ -42,7 +140,7 @@ COVID19Cases_geoRegion_balanced$data_balanced
 # Balanced? TRUE or FALSE
 
 CH_covidwave1 <- 
-  swash (
+  swash_backwash(
     data = COVID19Cases_geoRegion,
     col_cases = "entries",
     col_date = "datum",
@@ -55,15 +153,22 @@ CH_covidwave1 <-
 summary(CH_covidwave1)
 # Summary of Swash-Backwash Model
 
+CH_covidwave1 <- 
+  swash_backwash(
+    infpan=infpan_CH,
+    verbose = TRUE
+  )
+# Same Swash-Backwash Model analysis
+# with infpan object
+
 plot(CH_covidwave1)
 # Plot of Swash-Backwash Model edges and total epidemic curve
 
-plot_regions(
-  CH_covidwave1,
+plot(
+  infpan_CH,
   normalize_by_col = "pop",
   plot_rollmean = TRUE
   )
-
 
 CH_covidwave1_confint <- 
   confint(
@@ -78,23 +183,6 @@ summary(CH_covidwave1_confint)
 plot(CH_covidwave1_confint)
 # Plot of confidence intervals
 
-CH_covidwave1_growth <- growth(
-  CH_covidwave1,
-  verbose = TRUE
-  )
-CH_covidwave1_growth
-# Logistic growth models for sbm object CH_covidwave1
-
-CH_covidwave1_initialgrowth_3weeks <- 
-  growth_initial(
-    CH_covidwave1,
-    time_units = 21,
-    verbose = TRUE
-    )
-CH_covidwave1_initialgrowth_3weeks$results
-# Exponential models for sbm object CH_covidwave1 
-# initial growth in the first 3 weeks
-
 
 # Austria:
 
@@ -104,7 +192,7 @@ table(Oesterreich_Faelle$NUTS3)
 table(Oesterreich_Faelle$Datum)
 
 AT_covidwave1 <- 
-  swash (
+  swash_backwash(
     data = Oesterreich_Faelle,
     col_cases = "Faelle",
     col_date = "Datum",
@@ -123,7 +211,7 @@ AT_vs_CH <-
     CH_covidwave1, 
     AT_covidwave1,
     country_names = c("Switzerland", "Austria"),
-    iterations = 1000
+    iterations = 10
     )
 
 AT_vs_CH
@@ -137,7 +225,8 @@ COVID19Cases_ZH <-
     & (COVID19Cases_geoRegion$sumTotal > 0),]
 # COVID cases for Zurich
 
-loggrowth_BS <- logistic_growth (
+
+loggrowth_ZH <- logistic_growth(
   y = COVID19Cases_ZH$sumTotal, 
   t = COVID19Cases_ZH$datum, 
   S = 3600,
@@ -146,33 +235,38 @@ loggrowth_BS <- logistic_growth (
   S_iterations = 10, 
   S_start_est_method = "bisect", 
   seq_by = 10,
-  nls = TRUE,
-  verbose = TRUE
+  nls = TRUE
 )
 # Logistic growth model with stated saturation value
 
-summary(loggrowth_BS)
-# Summary of logistic growth model
+summary(loggrowth_ZH)
+# Summary of logistic growth model estimates
 
-plot(loggrowth_BS)
+plot(loggrowth_ZH)
 # Plot of logistic growth model
+
 
 Rt_BS <- R_t(infections = COVID19Cases_ZH$entries)
 Rt_BS
 # Effective reproduction number
 
 
-expgrowth_BS <- exponential_growth (
+expgrowth_ZH <- exponential_growth (
   y = COVID19Cases_ZH$sumTotal[1:28], 
   t = COVID19Cases_ZH$datum[1:28] 
 )
 # Exponential growth model for the first 4 weeks
 
-summary(expgrowth_BS)
+summary(expgrowth_ZH)
 # Summary of exponential growth model
 
-expgrowth_BS@doubling
-# Doubling rate
+plot(expgrowth_ZH)
+# Plot of exponential growth model
+
+expgrowth_ZH@GrowthModel_OLS$exp_gr
+# Doubling rate (OLS fit)
+expgrowth_ZH@GrowthModel_NLS$exp_gr
+# Doubling rate (NLS fit)
 
 
 load("../data/RKI_Corona_counties.rda")
@@ -241,9 +335,28 @@ plot_coef_ci(
 load("../data/Infections.rda")
 # Confirmed SARS-CoV-2 cases in Germany
 
-plot_breakpoints(
-  Infections, 
-  log(infections_daily) ~ day,
-  output.full = TRUE
-  )
-# Breakpoints for time series
+breakpoints_infections <- breaks_growth(
+  y = Infections$infections_daily,
+  t = Infections$day,
+  ln = TRUE,
+  verbose = TRUE
+)
+# Breakpoints for time series of infections
+
+summary(breakpoints_infections)
+# Summary of breakpoints
+
+plot(breakpoints_infections)
+# Plot breakpoints
+
+
+hawkes_BS <- hawkes_growth(
+  y = Infections$infections_daily
+)
+# Hawkes Process model
+
+summary(hawkes_BS)
+# Summary of Hawkes model estimates
+
+plot(hawkes_BS)
+# Plot of Hawkes Process model
