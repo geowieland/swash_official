@@ -1,6 +1,12 @@
 # swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data
 
-Within epidemic outbreaks, infections grow and decline differently between regions, and the velocity of spatial spread differs between countries. The `swash` library offers a set of model-based analyses for these topics. Spread velocity may be analysed with the Swash-Backwash Model for the Single Epidemic Wave and corresponding functions for bootstrap confidence intervals, country comparison, and visualization of results. Differences in epidemic growth between regions may be anaylsed using logistic growth models, exponential growth models, Hawkes processes and breakpoint analyses. All functionalities are accessed by the class `infpan` for infections panel data defined in this package, which is built from a `data.frame` provided by the user.
+The R library `swash` provides a toolbox for quantitative analyses in health geography with a focus on the spatial spread of infectious diseases.
+It bundles functions developed by the author between 2020 and 2023 for the quantitative analysis of (panel) infection data during the COVID-19 pandemic.
+The aim was to consolidate these methods and analytical tools into a unified and coherent framework.
+The target audience of this R package consists of researchers and practitioners in the fields of health geography, spatial epidemiology, and statistics.
+Spread velocity may be analysed with the Swash-Backwash Model for the Single Epidemic Wave and corresponding functions for bootstrap confidence intervals, country comparison, and visualization of results.
+Differences in epidemic growth between regions may be anaylsed using logistic growth models, exponential growth models, Hawkes processes and breakpoint analyses. All functionalities are accessed by the class `infpan` for infections panel data defined in this package, which is built from a `data.frame` provided by the user.
+
 
 ## Author
 
@@ -18,7 +24,7 @@ Thomas Wieland [ORCID](https://orcid.org/0000-0001-5168-9846) [EMail](mailto:geo
 
 If you use this software, please cite:
 
-Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 2.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
+Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 2.0.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
 
 
 ## Installation
@@ -44,9 +50,10 @@ In order to use all functionalities, the user should import her/his infections p
 which returns an instance of class `infpan`. The panel data is checked whether it is balanced and whether it includes missing values. 
 From an `infpan` object, the user may utilize the following built-in analysis models and visualization functions:
 
-- Swash-Backwash Model for the Single Epidemic Wave, including further analysis towards bootstrap-based inference and country comparison
-- Growth Analysis with logistic growth models, exponential growth models (for the initial phase of a spread), and Hawkes process models
-- Breakpoints analysis using the Bai-Parron algorithm implemented in `strucchange::breakpoints`
+- Swash-Backwash Model for the Single Epidemic Wave, including further analysis towards bootstrap-based inference and country comparison as well as visualization
+- Growth Analysis with logistic and exponential growth models for cumulative or incremental infections, whereby the former is intended for the entire infection wave, and the latter for the initial phase of the infection wave; including visualization
+- Hawkes process models for incremental infections; including visualization
+- Breakpoints analysis using the Bai-Perron algorithm implemented in `strucchange::breakpoints`; including visualization
 - Calculation of further epidemic indicators from the infections panel data such as the effective reproduction number
 - Plots of infection curves by region
 
@@ -199,22 +206,7 @@ Wieland, T. (2022). Spatial patterns of excess mortality in the first year of th
 Wieland, T. (2025). Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-2 pandemic: Results of a natural experiment regarding Baden-Württemberg (Germany) and Switzerland in the second infection wave. *Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. https://doi.org/10.1007/s10389-024-02218-x
 
 
-## What's new (v2.0.0)
-
-- Breaking changes (Non-backwards compatible)
-  - Analyses are conducted via `infpan` objects rather than `sbm` objects
-  - Former method `plot_regions()` for class `sbm` is replaced by generic method `plot()` for `infpan` objects
-  - Former methods `growth()` and `growth_initial()` for `sbm` objects are are now methods for the `infpan` class
-  - Former function `plot_breakpoints()` is replaced by function `breaks_growth()` and the corresponding `plot()` method
-
-- New features 
-  - Importing infections panel data via `load_infections_paneldata()`, which creates and instance of the new class `infpan`
-  - Calculation of spread indicators for `infpan` objects such as incidence and effective reproduction number $R_t$
-  - Function `hawkes_growth()` for parametrization of a Hawkes process equation for infections
-  - Method `growth_hawkes()` for parametrization of Hawkes process equations based on `infpan` objects
-  - Additional NLS estimation in function `exponential_growth()`
-  - Option to add a constant (if values of y equal to zero occur) in functions `logistic_growth()` and `exponential_growth()`, as well as in methods `growth(infpan)` and `growth_initial(infpan)` 
+## What's new (v2.0.1)
 
 - Bugfixes
-  - Functions `metrics()`, `binary_metrics()` and `binary_metrics_glm()` now return results invisible
-  - Check for equal length of input vectors in `logistic_growth()`
+  - Extensions and corrections of documentation files
