@@ -1,3 +1,4 @@
+\encoding{UTF-8}
 \name{COVID19Cases_geoRegion}
 \docType{data}
 \alias{COVID19Cases_geoRegion}
