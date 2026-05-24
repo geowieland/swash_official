@@ -31,7 +31,8 @@ it was placed inside the polygon manually.
 \source{
 BMSGPK, Oesterreichisches COVID-19 Open Data Informationsportal (2022) COVID-19: Zeitliche Darstellung von Daten zu Covid19-Faellen je Bezirk. \url{https://www.data.gv.at/katalog/dataset/4b71eb3d-7d55-4967-b80d-91a3f220b60c} (retrieved 2022-06-23)
 
-Statistik Austria (2022) Politische Bezirke. \url{https://www.data.gv.at/katalog/dataset/stat_gliederung-osterreichs-in-politische-bezirke131e2} (retrieved 2022-06-27)
+Statistik Austria (2022) Politische Bezirke. https://www.data.gv.at/katalog/dataset/stat_gliederung-osterreichs-in-politische-bezirke131e2 
+(retrieved 2022-06-27, URL does not exist anymore)
 
 Wieland T (2022) C19dNUTS: Dataset of Regional COVID-19 Deaths per 100,000 Pop (NUTS). R package v1.0.1. \doi{https://doi.org/10.32614/CRAN.package.C19dNUTS}
 }
