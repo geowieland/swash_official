@@ -24,7 +24,7 @@ Thomas Wieland [ORCID](https://orcid.org/0000-0001-5168-9846) [EMail](mailto:geo
 
 If you use this software, please cite:
 
-Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 2.0.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
+Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 2.0.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
 
 
 ## Installation
@@ -206,7 +206,10 @@ Wieland, T. (2022). Spatial patterns of excess mortality in the first year of th
 Wieland, T. (2025). Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-2 pandemic: Results of a natural experiment regarding Baden-Württemberg (Germany) and Switzerland in the second infection wave. *Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. https://doi.org/10.1007/s10389-024-02218-x
 
 
-## What's new (v2.0.1)
+## What's new (v2.0.2)
+
+- General
+  - Deprecation warnings with respect to version >=3.0.0
 
 - Bugfixes
-  - Extensions and corrections of documentation files
+  - Updating URLs in help texts that are no longer valid
