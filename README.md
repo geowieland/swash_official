@@ -4,8 +4,11 @@ The R library `swash` provides a toolbox for quantitative analyses in health geo
 It bundles functions developed by the author between 2020 and 2023 for the quantitative analysis of (panel) infection data during the COVID-19 pandemic.
 The aim was to consolidate these methods and analytical tools into a unified and coherent framework.
 The target audience of this R package consists of researchers and practitioners in the fields of health geography, spatial epidemiology, and statistics.
+
 Spread velocity may be analysed with the Swash-Backwash Model for the Single Epidemic Wave and corresponding functions for bootstrap confidence intervals, country comparison, and visualization of results.
-Differences in epidemic growth between regions may be anaylsed using logistic growth models, exponential growth models, Hawkes processes and breakpoint analyses. All functionalities are accessed by the class `infpan` for infections panel data defined in this package, which is built from a `data.frame` provided by the user.
+Differences in epidemic growth between regions may be analysed using logistic growth models, exponential growth models, Hawkes processes and breakpoint analyses. 
+Clusters and hotspots may be analysed with spatial statistics such as Getis-Ord and Moran's I.
+All functionalities are accessed by the class `infpan` for infections panel data defined in this package, which is built from a `data.frame` provided by the user. It is also possible to plot maps from `infpan` instances.
 
 
 ## Author
@@ -24,7 +27,7 @@ Thomas Wieland [ORCID](https://orcid.org/0000-0001-5168-9846) [EMail](mailto:geo
 
 If you use this software, please cite:
 
-Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 2.0.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
+Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 3.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
 
 
 ## Installation
@@ -54,8 +57,10 @@ From an `infpan` object, the user may utilize the following built-in analysis mo
 - Growth Analysis with logistic and exponential growth models for cumulative or incremental infections, whereby the former is intended for the entire infection wave, and the latter for the initial phase of the infection wave; including visualization
 - Hawkes process models for incremental infections; including visualization
 - Breakpoints analysis using the Bai-Perron algorithm implemented in `strucchange::breakpoints`; including visualization
+- Spatial statistics for the identification of clusters/hotspots, such as Moran's I and Getis-Ord
 - Calculation of further epidemic indicators from the infections panel data such as the effective reproduction number
 - Plots of infection curves by region
+- Map plots of infection indicators
 
 `infpan` objects and objects resulting from the functions mentioned above have `summary()` and `plot()` methods. 
 All mentioned functions may be used stand-alone as well.
@@ -206,10 +211,18 @@ Wieland, T. (2022). Spatial patterns of excess mortality in the first year of th
 Wieland, T. (2025). Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-2 pandemic: Results of a natural experiment regarding Baden-Württemberg (Germany) and Switzerland in the second infection wave. *Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. https://doi.org/10.1007/s10389-024-02218-x
 
 
-## What's new (v2.0.2)
+## What's new (v3.0.0)
 
-- General
-  - Deprecation warnings with respect to version >=3.0.0
+- Breaking changes (Non-backwards compatible)
+  - Complete change to the nbmatrix() function: creation of an instance of the new nbmatrix class 
+  - Replacement of the old nbstat() function with the nbstat() method of the nbmatrix class
+  - Rearrangement of the code in modules for better readability and easier maintaining
+
+- New features
+  - Spatial statistics based on neighborhood matrix: Global Getis-Ord, Global Moran's I, Local Getis-Ord Gi*, with all of them being methods of class nbmatrix
+  - Plotting a map from an nbmatrix object
+  - Importing geodata (sf) in infpan objects
+  - Plotting maps of attributes in an infpan object with method plot_map()
 
 - Bugfixes
-  - Updating URLs in help texts that are no longer valid
+  - Corrections in RD documentations

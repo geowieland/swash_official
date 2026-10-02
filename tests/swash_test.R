@@ -4,18 +4,26 @@
 # Author:      Thomas Wieland 
 #              ORCID: 0000-0001-5168-9846
 #              mail: geowieland@googlemail.com
-# Version:     2.0.0
-# Last update: 2026-04-04 21:47
+# Version:     2.1.0
+# Last update: 2026-10-02 18:31
 # Copyright (c) 2025-2026 Thomas Wieland
 #-------------------------------------------------------------------------------
 
+
+source("../R/config.R")
 source("../R/swash.R")
+source("../R/infpan.R")
+source("../R/helper.R")
+source("../R/growthmodels.R")
+source("../R/nbmat.R")
+source("../R/stathelp.R")
 # Loading swash code
 
 
 # Switzerland:
 
 load("../data/COVID19Cases_geoRegion.rda")
+load("../data/K4kant20260101gf_ch2007Poly.rda")
 
 table(COVID19Cases_geoRegion$geoRegion)
 table(COVID19Cases_geoRegion$datum)
@@ -29,16 +37,15 @@ COVID19Cases_geoRegion <-
 # Extract first COVID-19 wave
 
 infpan_CH <- load_infections_paneldata(
-    data = COVID19Cases_geoRegion,
-    col_cases = "entries",
-    col_date = "datum",
-    col_region = "geoRegion",
-    other_cols = c(
-      "Population" = "pop"
-      #, "Cum. cases" = "sumTotal"
-        ), 
-    verbose = TRUE
-  )
+  data = COVID19Cases_geoRegion,
+  col_cases = "entries",
+  col_date = "datum",
+  col_region = "geoRegion",
+  other_cols = c(
+    "Population" = "pop"
+  ), 
+  verbose = TRUE
+)
 # Import as infections panel data set (class infpan)
 
 is(infpan_CH)
@@ -77,11 +84,37 @@ infpan_CH <- calculate_incidence(
 )
 # Calculate incidence of cases as "incidence"
 
+infpan_CH <- add_geodata(
+  infpan_CH,
+  K4kant20260101gf_ch2007Poly,
+  unit_col = "cant_abbrev"
+)
+# Adding geodata (sf) to infpan object
+
 summary(infpan_CH)
 # Summary of infpan object
 
 timestamps(infpan_CH)
 # Time stamps of infpan object
+
+plot_map(
+  infpan_CH,
+  attribute = "Incidence",
+  main = "COVID-19 Indicence 2020-05-31",
+  breaks = c(0, 0.05, 0.1, 0.2, 1),
+  verbose = TRUE
+)
+# Simple map of incidence for the most current date (timepoint=NULL)
+
+moran_incidence <-
+  spatial_statistic(
+    infpan_CH,
+    statistic = "moran",
+    randomization = FALSE
+  )
+# Calculating Moran's I test under normality
+# Result = nbmatrix object
+
 
 CH_covidwave1_growth <- 
   growth(infpan_CH)
@@ -275,21 +308,72 @@ load("../data/RKI_Corona_counties.rda")
 Corona_nbmat <- 
   nbmatrix (
     RKI_Corona_counties, 
-    ID_col="AGS"
+    ID_col="AGS",
+    verbose = TRUE
   )
 # Creating neighborhood matrix
 
-Corona_nbstat <- 
-  nbstat (
-    RKI_Corona_counties, 
-    ID_col="AGS",
-    link_data = RKI_Corona_counties, 
-    data_ID_col = "AGS", 
-    data_col = "EWZ", 
-    func = "sum"
+Corona_nbstat <- nbstat(
+  Corona_nbmat,
+  link_data = RKI_Corona_counties, 
+  ID_col = "AGS", 
+  data_col = "EWZ", 
+  func = "sum",
+  verbose = TRUE
   )
-Corona_nbstat$nbmat_data_aggregate
 # Sum of population (EWZ) of neighboring counties
+
+plot(
+  Corona_nbstat,
+  main = "No. of inhabitants"
+)
+# Plot simple map of "EWZ"
+
+Corona_nbstat2 <- nbstat(
+  Corona_nbmat,
+  link_data = RKI_Corona_counties, 
+  ID_col = "AGS", 
+  data_col = "cases_per_", 
+  func = NULL,
+  verbose = TRUE
+)
+# New nbmatrix instance
+# Defining "cases_per_" (COVID-19 cases per 100,000 inhabitants) as analysis column
+
+Corona_SpatialStatistics <- moran(
+  Corona_nbstat2,
+  verbose = TRUE
+  )
+# Calculating Global Moran's I
+
+summary(Corona_SpatialStatistics)
+# Summary of nbmatrix object
+
+Corona_SpatialStatistics <- getisord(
+  Corona_SpatialStatistics,
+  verbose = TRUE
+)
+# Calculating Global Getis-Ord statistic
+
+summary(Corona_SpatialStatistics)
+# Summary of nbmatrix object
+
+Corona_SpatialStatistics <- gstar(
+  Corona_SpatialStatistics,
+  verbose = TRUE
+)
+# Calculating Local Getis-Ord Gi*
+
+summary(Corona_SpatialStatistics)
+# Summary of nbmatrix object
+
+plot(
+  Corona_SpatialStatistics,
+  statistic = "gstar",
+  attribute = "Cluster category",
+  main = "Hotspot high vs. low",
+  pal = c("blue", "red")
+  )
 
 
 load("../data/did_fatalities_splm_coef.rda")
