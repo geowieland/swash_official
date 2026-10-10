@@ -1,14 +1,31 @@
 # swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data
 
-The R library `swash` provides a toolbox for quantitative analyses in health geography with a focus on the spatial spread of infectious diseases.
-It bundles functions developed by the author between 2020 and 2023 for the quantitative analysis of (panel) infection data during the COVID-19 pandemic.
-The aim was to consolidate these methods and analytical tools into a unified and coherent framework.
-The target audience of this R package consists of researchers and practitioners in the fields of health geography, spatial epidemiology, and statistics.
+The `R` library `swash` provides a toolbox for quantitative analyses in health geography with respect to the 
+spatial spread of infectious diseases. The focus of the package is the analysis of infections panel data,
+for example, daily or weekly infections for $T$ time points and $N$ regions within a country.
+Examples of research questions include: 
+How quickly does an infectious disease spread across a country? 
+Are there differences in the spread velocity between countries?
+Are there regional differences in the growth rates of the infection wave? 
+When was the peak (inflection point) of infections reached in each region?
+Are there significant hotspots or clusters of infections?
 
-Spread velocity may be analysed with the Swash-Backwash Model for the Single Epidemic Wave and corresponding functions for bootstrap confidence intervals, country comparison, and visualization of results.
-Differences in epidemic growth between regions may be analysed using logistic growth models, exponential growth models, Hawkes processes and breakpoint analyses. 
+The target audience of this `R` package consists of researchers and practitioners in the fields of health geography, 
+spatial epidemiology, and statistics. However, many applications are also relevant to other fields of research, 
+such as econometrics or geoinformation science. The package bundles functions and analysis workflows developed by the author 
+between 2020 and 2023 for the quantitative analysis of (panel) infection data during the COVID-19 pandemic. 
+The aim was to consolidate these methods and analysis tools into a unified and coherent framework.
+Users simply need to import their infection panel data once; 
+based on this, they can calculate additional indicators and run the built-in analyses successively.
+
+Spread velocity may be analysed with the Swash-Backwash Model for the Single Epidemic Wave and 
+corresponding functions for bootstrap confidence intervals, country comparison, and visualization of results.
+Differences in epidemic growth between regions may be analysed using logistic growth models, 
+exponential growth models, Hawkes processes and breakpoint analyses. 
 Clusters and hotspots may be analysed with spatial statistics such as Getis-Ord and Moran's I.
-All functionalities are accessed by the class `infpan` for infections panel data defined in this package, which is built from a `data.frame` provided by the user. It is also possible to plot maps from `infpan` instances.
+All functionalities are accessed by the class `infpan` for infections panel data defined in this package, 
+which is built from a `data.frame` provided by the user. It is also possible to plot maps from `infpan` instances.
+All analysis functions (e.g., Swash-Backwash Model, phenomenological growth models) may be used stand-alone as well.
 
 
 ## Author
@@ -27,7 +44,7 @@ Thomas Wieland [ORCID](https://orcid.org/0000-0001-5168-9846) [EMail](mailto:geo
 
 If you use this software, please cite:
 
-Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 3.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
+Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 3.0.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
 
 
 ## Installation
@@ -48,22 +65,21 @@ remotes::install_github("geowieland/swash_official")
 
 ## Features
 
-The R library is a toolbox for quantitative analysis in health geography towards the spatial spread of infectious diseases.
-In order to use all functionalities, the user should import her/his infections panel data using the function `load_infections_paneldata()`, 
-which returns an instance of class `infpan`. The panel data is checked whether it is balanced and whether it includes missing values. 
-From an `infpan` object, the user may utilize the following built-in analysis models and visualization functions:
+The `R` library `swash` is a toolbox for quantitative analysis in health geography towards the spatial spread of infectious diseases.
+In order to use all functionalities, the user should import her/his infections panel data using the function `load_infections_paneldata()`, which returns an instance of class `infpan`. The panel data is checked whether it is balanced and whether it includes missing values. From an `infpan` object, the user may utilize the following built-in analysis and visualization functions:
 
-- Swash-Backwash Model for the Single Epidemic Wave, including further analysis towards bootstrap-based inference and country comparison as well as visualization
-- Growth Analysis with logistic and exponential growth models for cumulative or incremental infections, whereby the former is intended for the entire infection wave, and the latter for the initial phase of the infection wave; including visualization
-- Hawkes process models for incremental infections; including visualization
-- Breakpoints analysis using the Bai-Perron algorithm implemented in `strucchange::breakpoints`; including visualization
-- Spatial statistics for the identification of clusters/hotspots, such as Moran's I and Getis-Ord
-- Calculation of further epidemic indicators from the infections panel data such as the effective reproduction number
+- *Swash-Backwash Model for the Single Epidemic Wave*, including further analysis towards bootstrap-based inference and country comparison as well as visualization
+- Growth Analysis with *logistic* and *exponential growth models* for cumulative or incremental (daily/weekly) infections, including visualization
+- *Hawkes process* models for incremental infections, including visualization
+- *Breakpoints analysis* using the *Bai-Perron algorithm* implemented in strucchange::breakpoints, including visualization
+- Spatial statistics for the identification of clusters/hotspots, such as *Moran's I* and *Getis-Ord*, implemented in `spdep` and `sfdep`
+- Calculation of further epidemic indicators from the infections panel data such as the *effective reproduction number*
 - Plots of infection curves by region
-- Map plots of infection indicators
+- Map plots of infection indicators and (local) spatial statistics
 
-`infpan` objects and objects resulting from the functions mentioned above have `summary()` and `plot()` methods. 
+infpan objects and objects resulting from the functions mentioned above have summary() and plot() methods. 
 All mentioned functions may be used stand-alone as well.
+Every change (e.g., the calculation of a new indicator) within an object is tracked with a timestamp.
 
 
 ## Examples
@@ -174,55 +190,89 @@ summary(CH_covidwave1)
 # Summary of Swash-Backwash Model
 ```
 
-See the /tests directory for usage examples of most of the included functions.
+See the /examples directory for usage examples of most of the included functions.
 
 
 ## Literature
 
-Chowell, G., Simonsen, L., Viboud, C., & Yang, K. (2014). Is West Africa approaching a catastrophic phase or is the 2014 Ebola epidemic slowing down? Different models yield different answers for Liberia. *PLoS Currents*, 6. https://doi.org/10.1371/currents.outbreaks.b4690859d91684da963dc40e00f3da81
+Chowell, G., Simonsen, L., Viboud, C., & Yang, K. (2014). 
+Is West Africa approaching a catastrophic phase or is the 2014 Ebola epidemic slowing down? 
+Different models yield different answers for Liberia. 
+*PLoS Currents*, 6. [10.1371/currents.outbreaks.b4690859d91684da963dc40e00f3da81](https://doi.org/10.1371/currents.outbreaks.b4690859d91684da963dc40e00f3da81)
 
-Chowell, G., Viboud, C., Hyman, J. M., & Simonsen, L. (2015). The Western Africa Ebola virus disease epidemic exhibits both global exponential and local polynomial growth rates. *PLOS Currents Outbreaks*. https://doi.org/10.1371/currents.outbreaks.8b55f4bad99ac5c5db3663e916803261
+Chowell, G., Viboud, C., Hyman, J. M., & Simonsen, L. (2015). 
+The Western Africa Ebola virus disease epidemic exhibits both global exponential and local polynomial growth rates. 
+*PLOS Currents Outbreaks*. [10.1371/currents.outbreaks.8b55f4bad99ac5c5db3663e916803261](https://doi.org/10.1371/currents.outbreaks.8b55f4bad99ac5c5db3663e916803261)
 
-Cliff, A. D., & Haggett, P. (2006). A swash-backwash model of the single epidemic wave. *Journal of Geographical Systems*, 8(3), 227–252. https://doi.org/10.1007/s10109-006-0027-8
+Cliff, A. D. & Haggett, P. (2006). 
+A swash-backwash model of the single epidemic wave. 
+*Journal of Geographical Systems*, 8(3), 227–252. 
+[10.1007/s10109-006-0027-8](https://doi.org/10.1007/s10109-006-0027-8)
 
-Li, M. Y. (2018). *An Introduction to Mathematical Modeling of Infectious Diseases*. Springer. https://doi.org/10.1007/978-3-319-72122-4
+Getis, A. & Ord, J. K. (1992). 
+The analysis of spatial association by use of distance statistics. 
+*Geographical Analysis*, 24(3), 189–206. [10.1111/j.1538-4632.1992.tb00261.x](https://doi.org/10.1111/j.1538-4632.1992.tb00261.x)
 
-Nishiura, H., & Chowell, G. (2009). The effective reproduction number as a prelude to statistical estimation of time-dependent epidemic trends. In G. Chowell, J. M. Hyman, & L. M. A. Bettencourt (Eds.), *Mathematical and Statistical Estimation Approaches in Epidemiology* (pp. 103–121). Springer. https://doi.org/10.1007/978-90-481-2313-1_5
+Li, M. Y. (2018). *An Introduction to Mathematical Modeling of Infectious Diseases*. 
+Springer. [10.1007/978-3-319-72122-4](https://doi.org/10.1007/978-3-319-72122-4)
 
-Pell, B., Kuang, Y., Viboud, C., & Chowell, G. (2018). Using phenomenological models for forecasting the 2015 Ebola challenge. *Epidemics*, 22, 62–70. https://doi.org/10.1016/j.epidem.2016.11.002
+Nishiura, H., & Chowell, G. (2009). The effective reproduction number as a prelude to statistical 
+estimation of time-dependent epidemic trends. 
+In G. Chowell, J. M. Hyman, & L. M. A. Bettencourt (Eds.), *Mathematical and Statistical Estimation Approaches in Epidemiology* 
+(pp. 103–121). Springer. [10.1007/978-90-481-2313-1_5](https://doi.org/10.1007/978-90-481-2313-1_5)
 
-Rizoiu, M. A., Mishra, S., Kong, Q., Carman, M. & Xie, L. (2018). SIR-Hawkes: Linking Epidemic Models and Hawkes
-Processes to Model Diffusions in Finite Populations. *Proceedings of the 2018 World Wide Web Conference. 
-WWW’18*. Republic and Canton of Geneva, CHE: International World Wide Web Conferences
-Steering Committee, p. 419–428. https://doi.org/10.1145/3178876.3186108
+Pell, B., Kuang, Y., Viboud, C., & Chowell, G. (2018). 
+Using phenomenological models for forecasting the 2015 Ebola challenge. 
+*Epidemics*, 22, 62–70. [10.1016/j.epidem.2016.11.002](https://doi.org/10.1016/j.epidem.2016.11.002)
 
-Smallman-Raynor, M. R., Cliff, A. D., & Stickler, P. J. (2022a). Meningococcal meningitis and coal mining in provincial England: Geographical perspectives on a major epidemic, 1929–33. *Geographical Analysis*, 54, 197–216. https://doi.org/10.1111/gean.12272
+Rizoiu, M. A., Mishra, S., Kong, Q., Carman, M. & Xie, L. (2018). 
+SIR-Hawkes: Linking Epidemic Models and Hawkes Processes to Model Diffusions in Finite Populations. 
+*Proceedings of the 2018 World Wide Web Conference. WWW’18*. Republic and Canton of Geneva, CHE: International World Wide Web Conferences
+Steering Committee, p. 419–428. [10.1145/3178876.3186108](https://doi.org/10.1145/3178876.3186108)
 
-Smallman-Raynor, M. R., Cliff, A. D., & The COVID-19 Genomics UK (COG-UK) Consortium. (2022b). Spatial growth rate of emerging SARS-CoV-2 lineages in England, September 2020–December 2021. *Epidemiology and Infection*, 150, e145. https://doi.org/10.1017/S0950268822001285
+Rotejanaprasert, C., Chinpong, K., Lawson, A. B., Chienwichai, P. & Maude, R. J. (2024).
+Evaluation and comparison of spatial cluster detection methods for improved decision making of disease surveillance: 
+a case study of national dengue surveillance in Thailand. 
+*BMC Medical Research Methodology* 24, 14. [10.1186/s12874-023-02135-9](https://doi.org/10.1186/s12874-023-02135-9)
 
-Viboud, C., Bjørnstad, O. N., Smith, D. L., Simonsen, L., Miller, M. A., & Grenfell, B. T. (2006). Synchrony, waves, and spatial hierarchies in the spread of influenza. *Science*, 312, 447–451. https://doi.org/10.1126/science.1125237
+Smallman-Raynor, M. R., Cliff, A. D., & Stickler, P. J. (2022a). 
+Meningococcal meningitis and coal mining in provincial England: Geographical perspectives on a major epidemic, 1929–33. 
+*Geographical Analysis*, 54, 197–216. [10.1111/gean.12272](https://doi.org/10.1111/gean.12272)
 
-Wieland, T. (2020a). Flatten the curve! Modeling SARS-CoV-2/COVID-19 growth in Germany at the county level. *REGION*, 7(2), 43–83. https://doi.org/10.18335/region.v7i2.324
+Smallman-Raynor, M. R., Cliff, A. D., & The COVID-19 Genomics UK (COG-UK) Consortium. (2022b). 
+Spatial growth rate of emerging SARS-CoV-2 lineages in England, September 2020–December 2021. 
+*Epidemiology and Infection*, 150, e145. [10.1017/S0950268822001285](https://doi.org/10.1017/S0950268822001285)
 
-Wieland, T. (2020b). A phenomenological approach to assessing the effectiveness of COVID-19 related nonpharmaceutical interventions in Germany. *Safety Science*, 131, 104924. https://doi.org/10.1016/j.ssci.2020.104924
+Viboud, C., Bjørnstad, O. N., Smith, D. L., Simonsen, L., Miller, M. A., & Grenfell, B. T. (2006). 
+Synchrony, waves, and spatial hierarchies in the spread of influenza. 
+*Science*, 312, 447–451. [10.1126/science.1125237](https://doi.org/10.1126/science.1125237)
 
-Wieland, T. (2022). Spatial patterns of excess mortality in the first year of the COVID-19 pandemic in Germany. *European Journal of Geography*, 13(4), 18–33. https://doi.org/10.48088/ejg.t.wie.13.4.018.033
+Wieland, T. (2020a). 
+Flatten the curve! Modeling SARS-CoV-2/COVID-19 growth in Germany at the county level. 
+*REGION*, 7(2), 43–83. [10.18335/region.v7i2.324](https://doi.org/10.18335/region.v7i2.324)
 
-Wieland, T. (2025). Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-2 pandemic: Results of a natural experiment regarding Baden-Württemberg (Germany) and Switzerland in the second infection wave. *Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. https://doi.org/10.1007/s10389-024-02218-x
+Wieland, T. (2020b). 
+A phenomenological approach to assessing the effectiveness of COVID-19 related nonpharmaceutical interventions in Germany. 
+*Safety Science*, 131, 104924. [10.1016/j.ssci.2020.104924](https://doi.org/10.1016/j.ssci.2020.104924)
+
+Wieland, T. (2022). 
+Spatial patterns of excess mortality in the first year of the COVID-19 pandemic in Germany. 
+*European Journal of Geography*, 13(4), 18–33. [10.48088/ejg.t.wie.13.4.018.033](https://doi.org/10.48088/ejg.t.wie.13.4.018.033)
+
+Wieland, T. (2025). 
+Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-2 pandemic: Results of a natural experiment regarding Baden-Württemberg (Germany) and Switzerland in the second infection wave. 
+*Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. [10.1007/s10389-024-02218-x](https://doi.org/10.1007/s10389-024-02218-x)
 
 
-## What's new (v3.0.0)
-
-- Breaking changes (Non-backwards compatible)
-  - Complete change to the nbmatrix() function: creation of an instance of the new nbmatrix class 
-  - Replacement of the old nbstat() function with the nbstat() method of the nbmatrix class
-  - Rearrangement of the code in modules for better readability and easier maintaining
-
-- New features
-  - Spatial statistics based on neighborhood matrix: Global Getis-Ord, Global Moran's I, Local Getis-Ord Gi*, with all of them being methods of class nbmatrix
-  - Plotting a map from an nbmatrix object
-  - Importing geodata (sf) in infpan objects
-  - Plotting maps of attributes in an infpan object with method plot_map()
+## What's new (v3.0.1)
 
 - Bugfixes
-  - Corrections in RD documentations
+  - Corrections in NAMESPACE (required for correct package installation)
+  - exponential growth(): R0 is set to NA (instead of 0) if the estimated growth rate is negative
+  - metrics(): Correcting R-squared for zero variance, added na.rm parameter (default: TRUE)
+
+- Other
+  - Implemented testthat testing in tests/ folder, keeping former swash_test.R in examples/ folder
+  - Extensions of documentation
+
+See the [CRAN NEWS page](https://cran.r-project.org/web/packages/swash/news/news.html) for the complete changelog.
