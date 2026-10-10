@@ -2,3 +2,8 @@
 ^\.Rproj\.user$
 ^\.positai$
 ^\.claude$
+^\.github$
+^CONTRIBUTING\.md$
+^CITATION\.cff$
+^swash_CRAN_v
+^examples$

@@ -32,6 +32,7 @@ exportMethods(
   "plot",
   "plot_map",
   "print",
+  "spatial_statistic",
   "summary",
   "swash",
   "growth",
