@@ -275,4 +275,4 @@ Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-
   - Implemented testthat testing in tests/ folder, keeping former swash_test.R in examples/ folder
   - Extensions of documentation
 
-See the [CRAN NEWS page](https://cran.r-project.org/web/packages/swash/news/news.html) for the complete changelog.
+See the [NEWS file](NEWS.md) for the complete changelog.
