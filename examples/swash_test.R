@@ -4,26 +4,18 @@
 # Author:      Thomas Wieland 
 #              ORCID: 0000-0001-5168-9846
 #              mail: geowieland@googlemail.com
-# Version:     2.1.0
-# Last update: 2026-10-02 18:31
+# Version:     2.2.0
+# Last update: 2026-10-17 10:12
 # Copyright (c) 2025-2026 Thomas Wieland
 #-------------------------------------------------------------------------------
 
-
-source("../R/config.R")
-source("../R/swash.R")
-source("../R/infpan.R")
-source("../R/helper.R")
-source("../R/growthmodels.R")
-source("../R/nbmat.R")
-source("../R/stathelp.R")
-# Loading swash code
+library(swash)
 
 
 # Switzerland:
 
-load("../data/COVID19Cases_geoRegion.rda")
-load("../data/K4kant20260101gf_ch2007Poly.rda")
+data(COVID19Cases_geoRegion)
+data(K4kant20260101gf_ch2007Poly)
 
 table(COVID19Cases_geoRegion$geoRegion)
 table(COVID19Cases_geoRegion$datum)
@@ -100,7 +92,7 @@ timestamps(infpan_CH)
 plot_map(
   infpan_CH,
   attribute = "Incidence",
-  main = "COVID-19 Indicence 2020-05-31",
+  main = "COVID-19 Incidence 2020-05-31",
   breaks = c(0, 0.05, 0.1, 0.2, 1),
   verbose = TRUE
 )
@@ -219,7 +211,7 @@ plot(CH_covidwave1_confint)
 
 # Austria:
 
-load("../data/Oesterreich_Faelle.rda")
+data(Oesterreich_Faelle)
 
 table(Oesterreich_Faelle$NUTS3)
 table(Oesterreich_Faelle$Datum)
@@ -302,7 +294,7 @@ expgrowth_ZH@GrowthModel_NLS$exp_gr
 # Doubling rate (NLS fit)
 
 
-load("../data/RKI_Corona_counties.rda")
+data(RKI_Corona_counties)
 # German counties (Source: Robert Koch Institute)
 
 Corona_nbmat <- 
@@ -376,7 +368,7 @@ plot(
   )
 
 
-load("../data/did_fatalities_splm_coef.rda")
+data(did_fatalities_splm_coef)
 # Results of a difference-in-differences model
 
 plot_coef_ci(
@@ -416,7 +408,7 @@ plot_coef_ci(
 # Plot with point estimates and confidence intervals
 
 
-load("../data/Infections.rda")
+data(Infections)
 # Confirmed SARS-CoV-2 cases in Germany
 
 breakpoints_infections <- breaks_growth(
