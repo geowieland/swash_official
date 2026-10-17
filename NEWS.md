@@ -1,3 +1,17 @@
+# swash 3.0.2
+
+## Bugfixes
+- Fixed bugs in balancing datasets procedure in load_infections_paneldata(), is_balanced(), and as_balanced()
+- Checking of correct time format of 'col_date' in load_infections_paneldata() and swash_backwash()
+- Fixed bug in bootstrap sampling in confint(sbm)
+- A potential error in plot_coef_ci() involving exclusively positive or exclusively negative significant estimates has been fixed
+- Fixed bug in dealing with NA values in logistic_growth(), exponential_growth(), and breaks_growth()
+- Fixed bug in bisection mode in logistic_growth()
+- Checking of specified parameters in confint(sbm)
+- Checking 'infections' vector length and type of parameter 'GP' in R_t()
+- Restored erroneously removed NEWS.md
+
+
 # swash 3.0.1
 
 ## Bugfixes

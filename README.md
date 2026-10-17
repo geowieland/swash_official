@@ -39,12 +39,16 @@ Thomas Wieland [ORCID](https://orcid.org/0000-0001-5168-9846) [EMail](mailto:geo
 - 💻 GitHub Repository: [swash_official](https://github.com/geowieland/swash_official)
 - 📄 DOI (Zenodo): [10.5281/zenodo.18652150](https://doi.org/10.5281/zenodo.18652150)
 
+## Documentation
+
+- [Reference manual (CRAN)](https://cran.r-project.org/web/packages/swash/refman/swash.html)
+
 
 ## Citation
 
 If you use this software, please cite:
 
-Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 3.0.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
+Wieland, T. (2026). swash: Health Geography Toolbox for Model-Based Analysis of Infections Panel Data (Version 3.0.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.18652150
 
 
 ## Installation
@@ -69,8 +73,8 @@ The `R` library `swash` is a toolbox for quantitative analysis in health geograp
 In order to use all functionalities, the user should import her/his infections panel data using the function `load_infections_paneldata()`, which returns an instance of class `infpan`. The panel data is checked whether it is balanced and whether it includes missing values. From an `infpan` object, the user may utilize the following built-in analysis and visualization functions:
 
 - *Swash-Backwash Model for the Single Epidemic Wave*, including further analysis towards bootstrap-based inference and country comparison as well as visualization
-- Growth Analysis with *logistic* and *exponential growth models* for cumulative or incremental (daily/weekly) infections, including visualization
-- *Hawkes process* models for incremental infections, including visualization
+- Growth Analysis with *logistic* and *exponential growth models* for cumulative or new (e.g., daily, weekly) infections, including visualization
+- *Hawkes process* models for new (e.g., daily, weekly) infections, including visualization
 - *Breakpoints analysis* using the *Bai-Perron algorithm* implemented in strucchange::breakpoints, including visualization
 - Spatial statistics for the identification of clusters/hotspots, such as *Moran's I* and *Getis-Ord*, implemented in `spdep` and `sfdep`
 - Calculation of further epidemic indicators from the infections panel data such as the *effective reproduction number*
@@ -264,15 +268,17 @@ Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-
 *Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. [10.1007/s10389-024-02218-x](https://doi.org/10.1007/s10389-024-02218-x)
 
 
-## What's new (v3.0.1)
+## What's new (v3.0.2)
 
-- Bugfixes
-  - Corrections in NAMESPACE (required for correct package installation)
-  - exponential growth(): R0 is set to NA (instead of 0) if the estimated growth rate is negative
-  - metrics(): Correcting R-squared for zero variance, added na.rm parameter (default: TRUE)
+### Bugfixes
+- Fixed bugs in balancing datasets procedure in load_infections_paneldata(), is_balanced(), and as_balanced()
+- Checking of correct time format of 'col_date' in load_infections_paneldata() and swash_backwash()
+- Fixed bug in bootstrap sampling in confint(sbm)
+- A potential error in plot_coef_ci() involving exclusively positive or exclusively negative significant estimates has been fixed
+- Fixed bug in dealing with NA values in logistic_growth(), exponential_growth(), and breaks_growth()
+- Fixed bug in bisection mode in logistic_growth()
+- Checking of specified parameters in confint(sbm)
+- Checking 'infections' vector length and type of parameter 'GP' in R_t()
+- Restored erroneously removed NEWS.md
 
-- Other
-  - Implemented testthat testing in tests/ folder, keeping former swash_test.R in examples/ folder
-  - Extensions of documentation
-
-See the [NEWS file](NEWS.md) for the complete changelog.
+See the [NEWS](NEWS.md) file for the complete changelog.
