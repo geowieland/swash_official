@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to `swash`.
 
-`swash` is an open-source R package for quantitative analysis in health geography, with a particular focus on the analysis of spatial spreads of infectious diseases based on infections panel data. The package provides methods for analysing epidemic growth, spatial diffusion, and hotspots/clusters, including the Swash-Backwash Model for the Single Epidemic Wave, phenomenological growth models, and spatial statistics.
+`swash` is an open-source R package for quantitative analysis in health geography, with a particular focus on the analysis of spatial spreads of infectious diseases based on infections panel data. The package provides methods for analysing epidemic growth, spatial diffusion, and hotspots/clusters, including the Swash-Backwash Model of the Single Epidemic Wave, phenomenological growth models, and spatial statistics.
 
 ## Reporting issues
 
@@ -76,6 +76,10 @@ If you use the `swash` R package in scientific work, please cite the software ac
 ## Code of conduct
 
 Please keep discussions and contributions respectful, constructive, and focused on improving the software.
+
+## Usage of AI
+
+The package's code was written without the assistance of AI tools, and it should stay that way. However, I consider the use of AI tools for testing the package entirely legitimate.
 
 ## License
 
