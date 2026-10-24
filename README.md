@@ -18,7 +18,7 @@ The aim was to consolidate these methods and analysis tools into a unified and c
 Users simply need to import their infection panel data once; 
 based on this, they can calculate additional indicators and run the built-in analyses successively.
 
-Spread velocity may be analysed with the Swash-Backwash Model for the Single Epidemic Wave and 
+Spread velocity may be analysed with the Swash-Backwash Model of the Single Epidemic Wave and 
 corresponding functions for bootstrap confidence intervals, country comparison, and visualization of results.
 Differences in epidemic growth between regions may be analysed using logistic growth models, 
 exponential growth models, Hawkes processes and breakpoint analyses. 
@@ -72,10 +72,10 @@ remotes::install_github("geowieland/swash_official")
 The `R` library `swash` is a toolbox for quantitative analysis in health geography towards the spatial spread of infectious diseases.
 In order to use all functionalities, the user should import her/his infections panel data using the function `load_infections_paneldata()`, which returns an instance of class `infpan`. The panel data is checked whether it is balanced and whether it includes missing values. From an `infpan` object, the user may utilize the following built-in analysis and visualization functions:
 
-- *Swash-Backwash Model for the Single Epidemic Wave*, including further analysis towards bootstrap-based inference and country comparison as well as visualization
+- *Swash-Backwash Model of the Single Epidemic Wave*, including further analysis towards bootstrap-based inference and country comparison as well as visualization
 - Growth Analysis with *logistic* and *exponential growth models* for cumulative or new (e.g., daily, weekly) infections, including visualization
 - *Hawkes process* models for new (e.g., daily, weekly) infections, including visualization
-- *Breakpoints analysis* using the *Bai-Perron algorithm* implemented in strucchange::breakpoints, including visualization
+- *Breakpoints analysis* using the *Bai-Perron algorithm* implemented in `strucchange::breakpoints`, including visualization
 - Spatial statistics for the identification of clusters/hotspots, such as *Moran's I* and *Getis-Ord*, implemented in `spdep` and `sfdep`
 - Calculation of further epidemic indicators from the infections panel data such as the *effective reproduction number*
 - Plots of infection curves by region
