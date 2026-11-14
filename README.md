@@ -43,8 +43,8 @@ Thomas Wieland [ORCID](https://orcid.org/0000-0001-5168-9846) [EMail](mailto:geo
 
 ## Documentation
 
+- [Methodological handbook (GitHub Pages)](https://geowieland.github.io/swash_official/)
 - [Reference manual (CRAN)](https://cran.r-project.org/web/packages/swash/refman/swash.html)
-
 
 ## Citation
 
@@ -76,8 +76,8 @@ In order to use all functionalities, the user should import her/his infections p
 
 - *Swash-Backwash Model of the Single Epidemic Wave*, including further analysis towards bootstrap-based inference and country comparison as well as visualization
 - Growth Analysis with *logistic* and *exponential growth models* for cumulative or new (e.g., daily, weekly) infections, including visualization
-- *Hawkes process* models for new (e.g., daily, weekly) infections, including visualization
 - *Breakpoints analysis* using the *Bai-Perron algorithm* implemented in `strucchange::breakpoints`, including visualization
+- *Hawkes process* models for new (e.g., daily, weekly) infections, including visualization
 - Spatial statistics for the identification of clusters/hotspots, such as *Moran's I* and *Getis-Ord*, implemented in `spdep` and `sfdep`
 - Calculation of further epidemic indicators from the infections panel data such as the *effective reproduction number*
 - Plots of infection curves by region
@@ -201,71 +201,74 @@ See the /examples directory for usage examples of most of the included functions
 
 ## Literature
 
-Chowell, G., Simonsen, L., Viboud, C., & Yang, K. (2014). 
+Chowell G, Simonsen L, Viboud C, Yang K (2014) 
 Is West Africa approaching a catastrophic phase or is the 2014 Ebola epidemic slowing down? 
 Different models yield different answers for Liberia. 
 *PLoS Currents*, 6. [10.1371/currents.outbreaks.b4690859d91684da963dc40e00f3da81](https://doi.org/10.1371/currents.outbreaks.b4690859d91684da963dc40e00f3da81)
 
-Chowell, G., Viboud, C., Hyman, J. M., & Simonsen, L. (2015). 
+Chowell G, Viboud C, Hyman JM, Simonsen L (2015) 
 The Western Africa Ebola virus disease epidemic exhibits both global exponential and local polynomial growth rates. 
 *PLOS Currents Outbreaks*. [10.1371/currents.outbreaks.8b55f4bad99ac5c5db3663e916803261](https://doi.org/10.1371/currents.outbreaks.8b55f4bad99ac5c5db3663e916803261)
 
-Cliff, A. D. & Haggett, P. (2006). 
+Cliff AD, Haggett P (2006) 
 A swash-backwash model of the single epidemic wave. 
 *Journal of Geographical Systems*, 8(3), 227–252. 
 [10.1007/s10109-006-0027-8](https://doi.org/10.1007/s10109-006-0027-8)
 
-Getis, A. & Ord, J. K. (1992). 
+Getis A, Ord JK (1992) 
 The analysis of spatial association by use of distance statistics. 
 *Geographical Analysis*, 24(3), 189–206. [10.1111/j.1538-4632.1992.tb00261.x](https://doi.org/10.1111/j.1538-4632.1992.tb00261.x)
 
-Li, M. Y. (2018). *An Introduction to Mathematical Modeling of Infectious Diseases*. 
+Li MY (2018) 
+*An Introduction to Mathematical Modeling of Infectious Diseases*. 
 Springer. [10.1007/978-3-319-72122-4](https://doi.org/10.1007/978-3-319-72122-4)
 
-Nishiura, H., & Chowell, G. (2009). The effective reproduction number as a prelude to statistical 
-estimation of time-dependent epidemic trends. 
-In G. Chowell, J. M. Hyman, & L. M. A. Bettencourt (Eds.), *Mathematical and Statistical Estimation Approaches in Epidemiology* 
-(pp. 103–121). Springer. [10.1007/978-90-481-2313-1_5](https://doi.org/10.1007/978-90-481-2313-1_5)
+Nishiura H, Chowell G (2009) 
+The effective reproduction number as a prelude to statistical estimation of time-dependent epidemic trends. 
+In G Chowell, JM Hyman, LMA Bettencourt (Eds.), *Mathematical and Statistical Estimation Approaches in Epidemiology* (pp. 103–121). Springer. [10.1007/978-90-481-2313-1_5](https://doi.org/10.1007/978-90-481-2313-1_5)
 
-Pell, B., Kuang, Y., Viboud, C., & Chowell, G. (2018). 
+Pell B, Kuang Y, Viboud C, Chowell G (2018) 
 Using phenomenological models for forecasting the 2015 Ebola challenge. 
 *Epidemics*, 22, 62–70. [10.1016/j.epidem.2016.11.002](https://doi.org/10.1016/j.epidem.2016.11.002)
 
-Rizoiu, M. A., Mishra, S., Kong, Q., Carman, M. & Xie, L. (2018). 
+Rizoiu MA, Mishra S, Kong Q, Carman M, Xie L (2018) 
 SIR-Hawkes: Linking Epidemic Models and Hawkes Processes to Model Diffusions in Finite Populations. 
-*Proceedings of the 2018 World Wide Web Conference. WWW’18*. Republic and Canton of Geneva, CHE: International World Wide Web Conferences
-Steering Committee, p. 419–428. [10.1145/3178876.3186108](https://doi.org/10.1145/3178876.3186108)
+*Proceedings of the 2018 World Wide Web Conference. WWW’18*. Republic and Canton of Geneva, CHE: International World Wide Web Conferences Steering Committee, p. 419–428. [10.1145/3178876.3186108](https://doi.org/10.1145/3178876.3186108)
 
-Rotejanaprasert, C., Chinpong, K., Lawson, A. B., Chienwichai, P. & Maude, R. J. (2024).
+Rotejanaprasert C, Chinpong K, Lawson AB, Chienwichai P, Maude RJ (2024)
 Evaluation and comparison of spatial cluster detection methods for improved decision making of disease surveillance: 
 a case study of national dengue surveillance in Thailand. 
 *BMC Medical Research Methodology* 24, 14. [10.1186/s12874-023-02135-9](https://doi.org/10.1186/s12874-023-02135-9)
 
-Smallman-Raynor, M. R., Cliff, A. D., & Stickler, P. J. (2022a). 
+Smallman-Raynor MR, Cliff AD, Stickler PJ (2022) 
 Meningococcal meningitis and coal mining in provincial England: Geographical perspectives on a major epidemic, 1929–33. 
 *Geographical Analysis*, 54, 197–216. [10.1111/gean.12272](https://doi.org/10.1111/gean.12272)
 
-Smallman-Raynor, M. R., Cliff, A. D., & The COVID-19 Genomics UK (COG-UK) Consortium. (2022b). 
+Smallman-Raynor MR, Cliff AD, The COVID-19 Genomics UK (COG-UK) Consortium (2022) 
 Spatial growth rate of emerging SARS-CoV-2 lineages in England, September 2020–December 2021. 
 *Epidemiology and Infection*, 150, e145. [10.1017/S0950268822001285](https://doi.org/10.1017/S0950268822001285)
 
-Viboud, C., Bjørnstad, O. N., Smith, D. L., Simonsen, L., Miller, M. A., & Grenfell, B. T. (2006). 
+Unwin HJT, Routledge I, Flaxman S, Rizoiu M-A, Lai S, Cohen J, Weiss DJ, Mishra S, Bhatt S (2021) 
+Using Hawkes Processes to model imported and local malaria cases in near-elimination settings. 
+*PLoS Computational Biology* 17(4), e1008830. [10.1371/journal.pcbi.1008830](https://doi.org/10.1371/journal.pcbi.1008830)
+
+Viboud C, Bjørnstad ON, Smith DL, Simonsen L, Miller MA, Grenfell BT (2006) 
 Synchrony, waves, and spatial hierarchies in the spread of influenza. 
 *Science*, 312, 447–451. [10.1126/science.1125237](https://doi.org/10.1126/science.1125237)
 
-Wieland, T. (2020a). 
+Wieland T (2020) 
 Flatten the curve! Modeling SARS-CoV-2/COVID-19 growth in Germany at the county level. 
 *REGION*, 7(2), 43–83. [10.18335/region.v7i2.324](https://doi.org/10.18335/region.v7i2.324)
 
-Wieland, T. (2020b). 
+Wieland T (2020) 
 A phenomenological approach to assessing the effectiveness of COVID-19 related nonpharmaceutical interventions in Germany. 
 *Safety Science*, 131, 104924. [10.1016/j.ssci.2020.104924](https://doi.org/10.1016/j.ssci.2020.104924)
 
-Wieland, T. (2022). 
+Wieland T (2022) 
 Spatial patterns of excess mortality in the first year of the COVID-19 pandemic in Germany. 
 *European Journal of Geography*, 13(4), 18–33. [10.48088/ejg.t.wie.13.4.018.033](https://doi.org/10.48088/ejg.t.wie.13.4.018.033)
 
-Wieland, T. (2025). 
+Wieland T (2025) 
 Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-2 pandemic: Results of a natural experiment regarding Baden-Württemberg (Germany) and Switzerland in the second infection wave. 
 *Journal of Public Health: From Theory to Practice*, 33(11), 2497–2511. [10.1007/s10389-024-02218-x](https://doi.org/10.1007/s10389-024-02218-x)
 
@@ -283,5 +286,3 @@ Assessing the effectiveness of non-pharmaceutical interventions in the SARS-CoV-
 - Comprehensive and consistent validation of user-supplied time-series and panel data across all functions and methods that utilize time series; included `impute_missing_values` option 
 - `exponential growth()`: Doubling time is set to `NA` if the estimated growth rate `r` is non-positive 
 - If no start values for NLS estimation is specified in `exponential_growth()`, coefficients from the OLS estimation are used as start values (as in `logistic_growth()`)
-
-See the [NEWS](NEWS.md) file for the complete changelog.
