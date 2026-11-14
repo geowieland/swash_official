@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    {% if page.title %}
+      {{ page.title }} · {{ site.title }}
+    {% else %}
+      {{ site.title }}
+    {% endif %}
+  </title>
+
+  <meta name="description" content="{{ site.description }}">
+
+  <link rel="stylesheet"
+        href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="site-title" href="{{ '/' | relative_url }}">
+      {{ site.title }}
+    </a>
+  </div>
+</header>
+
+<main class="container content">
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <p>
+      <br>
+      <br>
+      <strong>{{ site.title }}</strong>
+      · <a href="mailto:geowieland@googlemail.com">Thomas Wieland</a>
+      · © 2026
+    </p>
+
+    <p>
+      Licensed under the
+      <a href="https://www.gnu.org/licenses/gpl-3.0.html">
+        GNU General Public License v3.0
+      </a>
+    </p>
+
+  </div>
+</footer>
+
+</body>
+</html>

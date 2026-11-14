@@ -1,0 +1,13 @@
+title: "Spatial Analysis of Epidemic Waves Using the R Package swash"
+description: "Methodological handbook of the analysis methods in the R package swash"
+author: "Thomas Wieland"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
