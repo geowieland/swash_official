@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,9 +47,76 @@
   </div>
 </header>
 
-<main class="container content">
-  {{ content }}
-</main>
+<div class="page-layout">
+
+  <!-- Left sidebar navigation -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <h2>Contents</h2>
+
+      <a href="{{ '/' | relative_url }}">Home</a>
+
+      <h3>Infections Data and Basic Analyses</h3>
+
+      <a href="{{ '/infections-data.html' | relative_url }}">
+        Infections data
+      </a>
+
+      <a href="{{ '/infections-indicators.html' | relative_url }}">
+        Indicators of infections over time
+      </a>
+
+      <a href="{{ '/data-manipulation.html' | relative_url }}">
+        Data manipulation
+      </a>
+
+      <h3>Swash-Backwash Model</h3>
+
+      <a href="{{ '/swash-backwash.html' | relative_url }}">
+        Swash-Backwash Model of the Single Epidemic Wave
+      </a>
+
+      <h3>Mathematical Models of Infection Growth</h3>
+
+      <a href="{{ '/exponential-growth.html' | relative_url }}">
+        Exponential growth model
+      </a>
+
+      <a href="{{ '/logistic-growth.html' | relative_url }}">
+        Logistic growth model
+      </a>
+
+      <a href="{{ '/hawkes-process.html' | relative_url }}">
+        Hawkes process
+      </a>
+
+      <a href="{{ '/breakpoints.html' | relative_url }}">
+        Breakpoints in time series
+      </a>
+
+      <a href="{{ '/goodness-of-fit.html' | relative_url }}">
+        Goodness-of-fit metrics
+      </a>
+      
+      <h3>Spatial statistics</h3>
+
+      <a href="{{ '/neighborhood-matrix.html' | relative_url }}">
+        Neighborhood matrix and spatial weights
+      </a>
+
+      <a href="{{ '/autocorrelation-cluster.html' | relative_url }}">
+        Statistics for spatial autocorrelation and clusters
+      </a>
+
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+    {{ content }}
+  </main>
+
+</div>
 
 <footer class="site-footer">
   <div class="container">
