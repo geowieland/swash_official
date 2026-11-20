@@ -1,4 +1,4 @@
-# Spatial Analysis of Epidemic Waves using the R Package swash
+⁸# Spatial Analysis of Epidemic Waves using the R Package swash
 
 **Author:** Thomas Wieland  
 **ORCID:** [0000-0001-5168-9846](https://orcid.org/0000-0001-5168-9846)  
@@ -11,3 +11,8 @@ This handbook aims to provide an overview of the methods and models for the spat
 If you use this handbook, please cite:
 
 Wieland T (2026) Spatial Analysis of Epidemic Waves using the `R` Package `swash`. [https://geowieland.github.io/swash_offical/](https://geowieland.github.io/swash_official/)
+
+
+<div class="toc-sidebar" markdown="1">
+
+</div>
