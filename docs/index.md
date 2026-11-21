@@ -1,4 +1,4 @@
-⁸# Spatial Analysis of Epidemic Waves using the R Package swash
+# Spatial Analysis of Epidemic Waves using the R Package swash
 
 **Author:** Thomas Wieland  
 **ORCID:** [0000-0001-5168-9846](https://orcid.org/0000-0001-5168-9846)  
