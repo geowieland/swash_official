@@ -2,15 +2,15 @@
 
 ## Background
 
-Spatial dependence means that the value of a variable at a specific location is determined (in part) by the values ​​of the same or other variables at neighboring locations, due to the existence of a (statistical and causal) relationship. Spatial dependence is measured by statistical indicators of spatial autocorrelation[1]. In the context of epidemic spreads, the mathematical determination of spatial dependence is primarily used to investigate clusters and hotspots of a specific infectious disease (e.g., in terms of [incidence](infections-indicators.md#incidence), deaths per capita, or [excess mortality](https://en.wikipedia.org/wiki/Excess_mortality)). Communicable diseases often exhibit spatial dependence: since spatial interactions between subregions of a larger area decrease as distance increases ([distance decay](https://en.wikipedia.org/wiki/Distance_decay)), clusters with high or relatively low case densities frequently emerge. Commuter flows play a significant role in the transmission of many infectious diseases. Furthermore, clusters also arise from individual super-spreading events[2][3][4][5][6]. 
+Spatial dependence means that the value of a variable at a specific location is determined (in part) by the values ​​of the same or other variables at neighboring locations, due to the existence of a (statistical and causal) relationship. Spatial dependence is measured by statistical indicators of spatial autocorrelation[<a href="#ref-1">1</a>]. In the context of epidemic spreads, the mathematical determination of spatial dependence is primarily used to investigate clusters and hotspots of a specific infectious disease (e.g., in terms of [incidence](infections-indicators.md#incidence), deaths per capita, or [excess mortality](https://en.wikipedia.org/wiki/Excess_mortality)). Communicable diseases often exhibit spatial dependence: since spatial interactions between subregions of a larger area decrease as distance increases ([distance decay](https://en.wikipedia.org/wiki/Distance_decay)), clusters with high or relatively low case densities frequently emerge. Commuter flows play a significant role in the transmission of many infectious diseases. Furthermore, clusters also arise from individual super-spreading events[<a href="#ref-2">2</a>][<a href="#ref-3">3</a>][<a href="#ref-4">4</a>][<a href="#ref-5">5</a>][<a href="#ref-6">6</a>]. 
 
 ## Spatial autocorrelation
 
-Spatial autocorrelation refers to the degree to which observations of a variable at nearby geographical locations are statistically related to each other, i.e., it is the correlation with the values ​​of neighboring or nearby regions. It describes the spatial pattern of a variable, indicating whether similar values tend to cluster together (positive spatial autocorrelation), dissimilar values are located near each other (negative spatial autocorrelation), or spatial patterns occur purely randomly (no spatial autocorrelation). Spatial autocorrelation is an important concept in [spatial analysis](https://en.wikipedia.org/wiki/Spatial_analysis), which is typically used to identifying underlying geographical patterns and dependencies in the data[1]. For the analysis of spatial autocorrelation or the detection of clusters there are both global and local approaches[1][2].
+Spatial autocorrelation refers to the degree to which observations of a variable at nearby geographical locations are statistically related to each other, i.e., it is the correlation with the values ​​of neighboring or nearby regions. It describes the spatial pattern of a variable, indicating whether similar values tend to cluster together (positive spatial autocorrelation), dissimilar values are located near each other (negative spatial autocorrelation), or spatial patterns occur purely randomly (no spatial autocorrelation). Spatial autocorrelation is an important concept in [spatial analysis](https://en.wikipedia.org/wiki/Spatial_analysis), which is typically used to identifying underlying geographical patterns and dependencies in the data[<a href="#ref-1">1</a>]. For the analysis of spatial autocorrelation or the detection of clusters there are both global and local approaches[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>].
 
 ## Global statistics
 
-Global spatial autocorrelation statistics yield a single indicator value representing the global autocorrelation across all subareas. The best-known ones are *Moran's I* and *Getis-Ord G*, as shown in the following[7][8]:
+Global spatial autocorrelation statistics yield a single indicator value representing the global autocorrelation across all subareas. The best-known ones are *Moran's I* and *Getis-Ord G*, as shown in the following[<a href="#ref-7">7</a>][<a href="#ref-8">8</a>]:
 
 ### Moran's I
 
@@ -66,7 +66,7 @@ where $$G$$ is the observed Getis-Ord statistic, $$E(G)$$ is its expectd value u
 
 ## Local statistics
 
-The latter approaches calculate indicators for any spatial object. These are typically called *LISA (Local Indicators of Spatial Association)*[9][10]:
+The latter approaches calculate indicators for any spatial object. These are typically called *LISA (Local Indicators of Spatial Association)*[<a href="#ref-9">9</a>][<a href="#ref-10">10</a>]:
 
 ### Local Getis-Ord Gi Statistic $$G_i^*$$
 
@@ -96,64 +96,78 @@ where $$G_i^*$$ is the observed local Getis-Ord statistic, $$E(G_i^*)$$ is its e
 
 ## Further notes
 
-In the context of the SARS-CoV-2/COVID-19 outbreak that began in 2020, several studies examined the spatial distribution of SARS-CoV-2 infections and/or COVID-19-associated deaths, employing indicators of spatial autocorrelation such as [Moran's I](#morans-i). In all cases, these analyses revealed a greater or lesser degree of spatial dependence, with several clearly identifiable clusters[6][11][12][13]. In one instance, an analysis of German counties during the first SARS-CoV-2 wave revealed that both COVID-19-associated deaths per capita and the intrinsic growth rates derived from [logistic growth models](logistic-growth.md) exhibit spatial autocorrelation[14].
+In the context of the SARS-CoV-2/COVID-19 outbreak that began in 2020, several studies examined the spatial distribution of SARS-CoV-2 infections and/or COVID-19-associated deaths, employing indicators of spatial autocorrelation such as [Moran's I](#morans-i). In all cases, these analyses revealed a greater or lesser degree of spatial dependence, with several clearly identifiable clusters[<a href="#ref-6">6</a>][<a href="#ref-11">11</a>][<a href="#ref-12">12</a>][<a href="#ref-13">13</a>]. In one instance, an analysis of German counties during the first SARS-CoV-2 wave revealed that both COVID-19-associated deaths per capita and the intrinsic growth rates derived from [logistic growth models](logistic-growth.md) exhibit spatial autocorrelation[<a href="#ref-14">14</a>].
 
 
 ## References
 
+<a id="ref-1"></a>
 [1] Griffith D (2009) 
 Spatial Autocorrelation. 
 In: Kitchin R, Thrift N (eds), *International Encyclopedia of Human Geography*, 308-316.
 
+<a id="ref-2"></a>
 [2] Lessler J, Salje H, Grabowski MK, Cummings DAT (2016) 
 Measuring Spatial Dependence for Infectious Disease Epidemiology.
 *PLoS ONE* 11(5), e0155249. [10.1371/journal.pone.0155249](https://doi.org/10.1371/journal.pone.0155249)
 
+<a id="ref-3"></a>
 [3] Rotejanaprasert C, Chinpong K, Lawson AB, Chienwichai P, Maude RJ (2024)
 Evaluation and comparison of spatial cluster detection methods for improved decision making of disease surveillance: 
 a case study of national dengue surveillance in Thailand. 
 *BMC Medical Research Methodology* 24, 14. [10.1186/s12874-023-02135-9](https://doi.org/10.1186/s12874-023-02135-9)
 
+<a id="ref-4"></a>
 [4] Charaudeau S, Pakdaman K, Böelle PY (2014). 
 Commuter Mobility and the Spread of Infectious Diseases: Application to Influenza in France. 
 *PLOS ONE* 9(1), 1-9. [10.1371/journal.pone.0083002](https://doi.org/10.1371/journal.pone.0083002)
 
+<a id="ref-5"></a>
 [5] Charu V, Zeger S, Gog J, Bjørnstad ON, Kissler S, Simonsen L, Grenfell BT, Viboud, C (2017). 
 Human mobility and the spatial transmission of influenza in the United States. 
 *PLOS Computational Biology*, 13, 1-23. https://doi.org/10.1371/journal.pcbi.1005382.
 
+<a id="ref-6"></a>
 [6] Wieland T (2022) 
 Spatial patterns of excess mortality in the first year of the COVID-19 pandemic in Germany. 
 *European Journal of Geography*, 13(4), 18–33. [10.48088/ejg.t.wie.13.4.018.033](https://doi.org/10.48088/ejg.t.wie.13.4.018.033)
 
+<a id="ref-7"></a>
 [7] Getis A, Ord JK (1992)
 The analysis of spatial association by use of distance statistics. 
 *Geographical Analysis* 24 (3), 189–206. [10.1111/j.1538-4632.1992.tb00261.x](https://doi.org/10.1111/j.1538-4632.1992.tb00261.x)
 
+<a id="ref-8"></a>
 [8] Moran PAP (1950) 
 Notes on Continuous Stochastic Phenomena. 
 *Biometrika* 37(1/2), 17-23. [10.2307/2332142](https://doi.org/10.2307/2332142)
 
+<a id="ref-9"></a>
 [9] Ord JK, Getis A (1995) 
 Local Spatial Autocorrelation Statistics: Distributional Issues and an Application. 
 *Geographical Analysis* 27, 286-306. [10.1111/j.1538-4632.1995.tb00912.x](https://doi.org/10.1111/j.1538-4632.1995.tb00912.x)
 
+<a id="ref-10"></a>
 [10] Danek T, Weglinska E, Zareba M (2022) 
 The influence of meteorological factors and terrain on air pollution concentration and migration: a geostatistical case study from Krakow, Poland. 
 *Scientific Reports* 12, 11050. [10.1038/s41598-022-15160-3](https://doi.org/10.1038/s41598-022-15160-3)
 
+<a id="ref-11"></a>
 [11] Bourdin S, Jeanne L, Nadou F, Noiret G (2021)
 Does lockdown work? A spatial analysis of the spread and concentration of Covid-19 in Italy.
 *Regional Studies* 55(7), 1182–1193. [10.1080/00343404.2021.1887471](https://doi.org/10.1080/00343404.2021.1887471)
 
+<a id="ref-12"></a>
 [12] Saffary T, Adegboye OA, Gayawan E, Elfaki F, Kuddus MA, Saffary R (2020) 
 Analysis of COVID-19 Cases' Spatial Dependence in US Counties Reveals Health Inequalities.
 *Frontiers in Public Health* 8, 579190. [10.3389/fpubh.2020.579190](https://doi.org/10.3389/fpubh.2020.579190)
 
+<a id="ref-13"></a>
 [13] Wang Q, Dong W, Yang K, Ren Z, Huang D, Zhang P, Wang J (2021)
 Temporal and spatial analysis of COVID-19 transmission in China and its influencing factors.
 *International Journal of Infectious Diseases* 105, 675-685. [10.1016/j.ijid.2021.03.014](https://doi.org/10.1016/j.ijid.2021.03.014)
 
+<a id="ref-14"></a>
 [14] Wieland T (2020) 
 Flatten the curve! Modeling SARS-CoV-2/COVID-19 growth in Germany at the county level. 
 *REGION*, 7(2), 43–83. [10.18335/region.v7i2.324](https://doi.org/10.18335/region.v7i2.324)

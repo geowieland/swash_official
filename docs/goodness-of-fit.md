@@ -2,7 +2,7 @@
 
 ## Background
 
-Goodness-of-fit metrics are used to evaluate how well a model's predicted values match the observed values. They quantify different aspects of model performance, including the proportion of explained variance, the magnitude of prediction errors, relative deviations, and the distribution of errors across observations[1][2]. The model fit indicators are relevant for the empirical parametrization approaches of the models of infection growth over time, e.g. [logistic](logistic-growth.md) or [exponential growth model](exponential-growth.md). In these cases, we are dealing with [time series](infections-data.md#time-series-data) consisting of $$T$$ time points; the number of observations is therefore equal to $$T$$.
+Goodness-of-fit metrics are used to evaluate how well a model's predicted values match the observed values. They quantify different aspects of model performance, including the proportion of explained variance, the magnitude of prediction errors, relative deviations, and the distribution of errors across observations[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>]. The model fit indicators are relevant for the empirical parametrization approaches of the models of infection growth over time, e.g. [logistic](logistic-growth.md) or [exponential growth model](exponential-growth.md). In these cases, we are dealing with [time series](infections-data.md#time-series-data) consisting of $$T$$ time points; the number of observations is therefore equal to $$T$$.
 
 Throughout the following definitions, the notation is:
 
@@ -13,7 +13,7 @@ Throughout the following definitions, the notation is:
 - $$n$$: Number of valid observed–expected pairs
 - $$p$$: Percentage scaling factor (typically 100)
 
-The following list and the formulas are based on academic literature from the fields of econometrics and machine learning[1][2]:
+The following list and the formulas are based on academic literature from the fields of econometrics and machine learning[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>]:
 
 ## Variance-Based Metrics
 
@@ -110,10 +110,12 @@ Observations with zero observed values must be excluded from the APE calculation
 
 ## References
 
+<a id="ref-1"></a>
 [1] Boehmke B, Greenwell B (2020) 
 Hands-On Machine Learning with R. 1 ed. 
 New York, NY: Taylor & Francis. [10.1201/9780367816377](https://doi.org/10.1201/9780367816377)
 
+<a id="ref-2"></a>
 [2] Buturac G (2022)
 Measurement of Economic Forecast Accuracy: A Systematic Overview of the Empirical Literature. 
 *Journal of Risk and Financial Management* 15(1), 1. [10.3390/jrfm15010001](https://doi.org/10.3390/jrfm15010001)
