@@ -2,22 +2,22 @@
 
 ## Background
 
-The *Swash-Backwash Model of the Single Epidemic Wave* (in short: SBM) was developed by Cliff and Haggett (2006)[1]. It is the spatial equivalent of the classic epidemiological [Susceptible-Infected-Recovered (SIR) Model](https://en.wikipedia.org/wiki/Compartmental_models_(epidemiology)#The_SIR_model), which divides the population into the not yet infected (susceptible), the infected, and the recovered, and models the development of these three groups over the course of a wave of an infectious disease. The model draws its terminology from coastal geomorphology, where waves advance up a beach (*swash*) and subsequently retreat (*backwash*). 
+The *Swash-Backwash Model of the Single Epidemic Wave* (in short: SBM) was developed by Cliff and Haggett (2006)[<a href="#ref-1">1</a>]. It is the spatial equivalent of the classic epidemiological [Susceptible-Infected-Recovered (SIR) Model](https://en.wikipedia.org/wiki/Compartmental_models_(epidemiology)#The_SIR_model), which divides the population into the not yet infected (susceptible), the infected, and the recovered, and models the development of these three groups over the course of a wave of an infectious disease. The model draws its terminology from coastal geomorphology, where waves advance up a beach (*swash*) and subsequently retreat (*backwash*). 
 
-In simple terms, the SBM analyses the spread of an infectious disease across a country's regions, distinguishing between regions where no cases have yet occurred (*susceptible areas*), those with active infections (*infected areas*), and those where cases are no longer occurring (*recovered areas*). The transmission speed between regions is represented by the *spatial reproduction number* $$R_{0A}$$, which refers to the [basic reproduction number $$R_0$$](exponential-growth.md#basic-reproduction-number-and-doubling-time) in epidemiology[1][2][3]. The analysis of a spatial epidemic spread using the SBM requires [infections panel data](infections-data.md#panel-data) of [new infections](infections-indicators.md#new-infections-and-cumulative-infections) (e.g., daily, weekly or monthly).
+In simple terms, the SBM analyses the spread of an infectious disease across a country's regions, distinguishing between regions where no cases have yet occurred (*susceptible areas*), those with active infections (*infected areas*), and those where cases are no longer occurring (*recovered areas*). The transmission speed between regions is represented by the *spatial reproduction number* $$R_{0A}$$, which refers to the [basic reproduction number $$R_0$$](exponential-growth.md#basic-reproduction-number-and-doubling-time) in epidemiology[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>][<a href="#ref-3">3</a>]. The analysis of a spatial epidemic spread using the SBM requires [infections panel data](infections-data.md#panel-data) of [new infections](infections-indicators.md#new-infections-and-cumulative-infections) (e.g., daily, weekly or monthly).
   
 
 ## Concept and mathematical formulation
 
 We have an area $$A$$ (e.g., country) which consists of $$J$$ ($$j = 1,2,...,J$$) subregions (e.g., counties, federal states). For these regions, infection panel data are available for $$T$$ ($$t = 1,2,...,T$$) discrete time periods. We denote $$N_{jt}$$ as the number of new infection cases in region $$j$$ at time $$t$$, and the total number of infection cases during the epidemic wave across all regions and time points is $$N = \sum_{j=1}^J \sum_{t=1}^T N_{jt}$$. 
 
-Over the course of an infection wave, the regions within the total area of investigation fall into one of three mutually exclusive states: regions where no infections have (yet) occurred at time $$t$$ (*susceptible areas*), regions where infections are occurring at time $$t$$ (*infected areas*), and regions where infections are no longer occurring at time $$t$$ (*recovered areas*). Just as the sum of the susceptible, infected, and recovered populations in the SIR model equals the total population, the sum of the three area integrals corresponds to the entire area[1]:
+Over the course of an infection wave, the regions within the total area of investigation fall into one of three mutually exclusive states: regions where no infections have (yet) occurred at time $$t$$ (*susceptible areas*), regions where infections are occurring at time $$t$$ (*infected areas*), and regions where infections are no longer occurring at time $$t$$ (*recovered areas*). Just as the sum of the susceptible, infected, and recovered populations in the SIR model equals the total population, the sum of the three area integrals corresponds to the entire area[<a href="#ref-1">1</a>]:
 
 $$S_A + I_A + R_A = 1 = A$$
 
 where $$S_A$$ contains all susceptible regions, $$I_A$$ contains all infected regions, and $$R_A$$ contains all recovered regions within the total area of investigation, $$A$$.
 
-For a given region $$j$$ in which an infection first occurred (or was first detected), we refer to the point in time $$t$$ when this took place (e.g., day, week, month) as the *leading edge* (LE). The point in time when the last infection was reported is called the *following edge* (FE). For both edges, a time-weighted arithmetic mean is defined, which indicates the average time of arrival or, respectively, the average time of decay of the epidemic wave across all regions[1][2]:
+For a given region $$j$$ in which an infection first occurred (or was first detected), we refer to the point in time $$t$$ when this took place (e.g., day, week, month) as the *leading edge* (LE). The point in time when the last infection was reported is called the *following edge* (FE). For both edges, a time-weighted arithmetic mean is defined, which indicates the average time of arrival or, respectively, the average time of decay of the epidemic wave across all regions[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>]:
 
 $$\bar{t}_{LE} = \frac{1}{J_{LE}} \sum_{t=1}^T t \cdot N_{t,LE}$$
 
@@ -29,7 +29,7 @@ An initial measure of the rate of spatial spread is the difference between the t
 
 $$\Delta t = \bar{t}_{FE}-\bar{t}_{LE}$$
 
-The susceptible (proportion of the study area at risk of infection), infected (proportion of the study area which is infected), and recovered integrals can be calculated from the rate of spread as follows[1][2]:
+The susceptible (proportion of the study area at risk of infection), infected (proportion of the study area which is infected), and recovered integrals can be calculated from the rate of spread as follows[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>]:
 
 $$S_A = \frac{\bar{t}_{LE}-1}{T}$$
 
@@ -39,8 +39,7 @@ $$R_A = 1 - (S_A + I_A)$$
 
 where $$S_A$$ is the susceptible integral, $$I_A$$ is the infected integral, and $$R_A$$ is the recovered integral.
 
-Drawing on considerations regarding the mathematical formulation of the basic reproduction number, Cliff and Haggett derive an analogous spatial reproduction number, which they define as follows: "In spatial terms, $$A$$, the spatial reproduction number,
-$$R_{0A}$$, is the average number of secondary districts produced from one infected district in a virgin area"[1]. It is calculated as follows[1][2]:
+Drawing on considerations regarding the mathematical formulation of the basic reproduction number, Cliff and Haggett derive an analogous spatial reproduction number, which they define as follows: "In spatial terms, $$A$$, the spatial reproduction number, $$R_{0A}$$, is the average number of secondary districts produced from one infected district in a virgin area"[<a href="#ref-1">1</a>]. It is calculated as follows[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>]:
 
 $$R_{0A} = \frac{1-S_A}{1-R_A}$$
 
@@ -48,7 +47,7 @@ where $$R_{0A}$$ is the spatial reproduction number.
 
 ## Bootstrap inference
 
-*Bootstrap sampling* is a *resampling* technique in which multiple new samples of the same size are repeatedly drawn with replacement from an original dataset. It allows the statistical properties of a given estimator to be empirically assessed. Bootstrap sampling forms the basis of *bootstrap inference*, which includes generating [confidence intervals](https://en.wikipedia.org/wiki/Confidence_interval) without making strong assumptions about the underlying population distribution ([nonparametric method](https://en.wikipedia.org/wiki/Nonparametric_statistics)). It is especially valuable when the true distribution is unknown or when traditional statistical methods are not applicable. Confidence intervals may be obtained from the quantiles of the bootstrap distribution. For a 95% confidence interval, the lower and upper bounds correspond to the 2.5th and 97.5th percentiles, respectively[4][5][6]. This is the case for the results of the Swash-Backwash Model (e.g., spatial reproduction number $$R_{0A}$$), as its basic form does not include any statistical inference (see above).
+*Bootstrap sampling* is a *resampling* technique in which multiple new samples of the same size are repeatedly drawn with replacement from an original dataset. It allows the statistical properties of a given estimator to be empirically assessed. Bootstrap sampling forms the basis of *bootstrap inference*, which includes generating [confidence intervals](https://en.wikipedia.org/wiki/Confidence_interval) without making strong assumptions about the underlying population distribution ([nonparametric method](https://en.wikipedia.org/wiki/Nonparametric_statistics)). It is especially valuable when the true distribution is unknown or when traditional statistical methods are not applicable. Confidence intervals may be obtained from the quantiles of the bootstrap distribution. For a 95% confidence interval, the lower and upper bounds correspond to the 2.5th and 97.5th percentiles, respectively[<a href="#ref-4">4</a>][<a href="#ref-5">5</a>][<a href="#ref-6">6</a>]. This is the case for the results of the Swash-Backwash Model (e.g., spatial reproduction number $$R_{0A}$$), as its basic form does not include any statistical inference (see above).
 
 Bootstrap inference for the SBM results may be generated as follows:
 
@@ -59,9 +58,9 @@ Bootstrap inference for the SBM results may be generated as follows:
 
 ## Nonparametric test for differences between two countries
 
-The SBM does not offer a way to perform inferential statistical comparisons of SBM parameter results between different areas (e.g., countries) or between infectious diseases within the same country. For comparing the means of two samples of approximately normally distributed variables, several mean-comparison methods based on the t-distribution (["t-tests"](https://en.wikipedia.org/wiki/Student%27s_t-test)) are available. However, these are not applicable to estimators with unknown distributions. In such cases, nonparametric statistical methods can also be used to examine whether there is a significant difference in a parameter $$\hat{\theta}$$ between two independent groups. While this parameter may be a mean value, the method is, in principle, applicable to any parameter whatsoever. The key idea behind this is to calculate the differences in the parameter for each bootstrap sample and then examine the distribution of these difference values[4][7][8]. 
+The SBM does not offer a way to perform inferential statistical comparisons of SBM parameter results between different areas (e.g., countries) or between infectious diseases within the same country. For comparing the means of two samples of approximately normally distributed variables, several mean-comparison methods based on the t-distribution (["t-tests"](https://en.wikipedia.org/wiki/Student%27s_t-test)) are available. However, these are not applicable to estimators with unknown distributions. In such cases, nonparametric statistical methods can also be used to examine whether there is a significant difference in a parameter $$\hat{\theta}$$ between two independent groups. While this parameter may be a mean value, the method is, in principle, applicable to any parameter whatsoever. The key idea behind this is to calculate the differences in the parameter for each bootstrap sample and then examine the distribution of these difference values[<a href="#ref-4">4</a>][<a href="#ref-7">7</a>][<a href="#ref-8">8</a>]. 
 
-Suppose we have two (meaningfully comparable) countries, $$A$$ and $$B$$, experiencing an epidemic spread. These countries include $$J_A$$ and $$J_B$$ regions, respectively. To examine whether there is a significant difference in a specific parameter $$\hat{\theta}$$ between these countries (e.g., $$R_{0A}$$ from the SBM), one can proceed as follows[7][8]:
+Suppose we have two (meaningfully comparable) countries, $$A$$ and $$B$$, experiencing an epidemic spread. These countries include $$J_A$$ and $$J_B$$ regions, respectively. To examine whether there is a significant difference in a specific parameter $$\hat{\theta}$$ between these countries (e.g., $$R_{0A}$$ from the SBM), one can proceed as follows[<a href="#ref-7">7</a>][<a href="#ref-8">8</a>]:
 
 1. Define a [significance level](https://en.wikipedia.org/wiki/Statistical_significance) $$\alpha$$, e.g., $$\alpha = 0.05$$ 
 2. Define a number of $$B$$ bootstrap samples ($$b = 1,2,...,B$$) and the proportion $$s$$ of of the $$J_A$$ and $$J_B$$ regions which is to be drawn from the original dataset (e.g., 0.8), which leads to $$n_A = s \cdot J_A \cdot T$$ and $$n_B = s \cdot J_B \cdot T$$
@@ -73,37 +72,47 @@ If both percentiles are below or above zero, we may interpret the difference in 
 
 ## Further notes
 
-Several historical outbreaks have already been analyzed using this model[1][2]. The model was also used for a comparative analysis of the spatial spread rates of different SARS-CoV-2 variants[3].
+Several historical outbreaks have already been analyzed using this model[<a href="#ref-1">1</a>][<a href="#ref-2">2</a>]. The model was also used for a comparative analysis of the spatial spread rates of different SARS-CoV-2 variants[<a href="#ref-3">3</a>].
 
 ## References
 
-[1] Cliff, A. D. & Haggett, P. (2006). 
+<a id="ref-1"></a>
+[1] Cliff AD, Haggett P (2006)
 A swash-backwash model of the single epidemic wave. 
 *Journal of Geographical Systems*, 8(3), 227–252. 
 [10.1007/s10109-006-0027-8](https://doi.org/10.1007/s10109-006-0027-8)
 
-[2] Smallman-Raynor, M. R., Cliff, A. D., & Stickler, P. J. (2022). 
+<a id="ref-2"></a>
+[2] Smallman-Raynor MR, Cliff AD, Stickler PJ (2022) 
 Meningococcal meningitis and coal mining in provincial England: Geographical perspectives on a major epidemic, 1929–33. 
 *Geographical Analysis*, 54, 197–216. [10.1111/gean.12272](https://doi.org/10.1111/gean.12272)
 
-[3] Smallman-Raynor, M. R., Cliff, A. D., & The COVID-19 Genomics UK (COG-UK) Consortium. (2022). 
+<a id="ref-3"></a>
+[3] Smallman-Raynor MR, Cliff AD, The COVID-19 Genomics UK (COG-UK) Consortium (2022) 
 Spatial growth rate of emerging SARS-CoV-2 lineages in England, September 2020–December 2021. 
 *Epidemiology and Infection*, 150, e145. [10.1017/S0950268822001285](https://doi.org/10.1017/S0950268822001285)
 
-[4] Dixon PM (2006) Bootstrap Resampling. In *Encyclopedia of Environmetrics* (eds A.H. El-Shaarawi and W.W. Piegorsch). [10.1002/9780470057339.vab028](https://doi.org/10.1002/9780470057339.vab028)
+<a id="ref-4"></a>
+[4] Dixon PM (2006) 
+Bootstrap Resampling. 
+In *Encyclopedia of Environmetrics* (eds A.H. El-Shaarawi and W.W. Piegorsch). [10.1002/9780470057339.vab028](https://doi.org/10.1002/9780470057339.vab028)
 
+<a id="ref-5"></a>
 [5] Efron B, Tibshirani R (1986)
 Bootstrap Methods for Standard Errors, Confidence Intervals, and Other Measures of Statistical Accuracy.
 *Statistical Science* 1(1), 54-75. [10.1214/ss/1177013815](https://doi.org/10.1214/ss/1177013815) 
 
+<a id="ref-6"></a>
 [6] Rousselet GA, Pernet CR, Wilcox RR (2021) 
 The Percentile Bootstrap: A Primer With Step-by-Step Instructions in R. 
 *Advances in Methods and Practices in Psychological Science* 4(1), 1-10. [10.1177/2515245920911881](https://doi.org/10.1177/2515245920911881)
 
+<a id="ref-7"></a>
 [7] Hesterberg TC (2015) 
 What Teachers Should Know About the Bootstrap: Resampling in the Undergraduate Statistics Curriculum. 
 *The American Statistician* 69(4), 371–386. [10.1080/00031305.2015.1089789](https://doi.org/10.1080/00031305.2015.1089789)
 
+<a id="ref-8"></a>
 [8] Çetinkaya-Rundel M, Hardin J (2026)
 *Introduction to Modern Statistics*. Second Edition.
 https://openintrostat.github.io/ims/
